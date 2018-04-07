@@ -8,6 +8,9 @@ gem 'coffee-rails'
 gem 'jquery-rails' 
 gem 'turbolinks'   
 gem 'haml-rails'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
 
 # password encryption
 gem 'bcrypt'
