@@ -10,7 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407082001) do
+ActiveRecord::Schema.define(version: 20180408185606) do
+
+  create_table "bets", force: :cascade do |t|
+    t.integer "game_id"
+    t.integer "user_id"
+    t.integer "team_a_score"
+    t.integer "team_b_score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_bets_on_game_id"
+    t.index ["user_id"], name: "index_bets_on_user_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.integer "team_a_id"
+    t.integer "team_b_id"
+    t.integer "score_a"
+    t.integer "score_b"
+    t.string "group"
+    t.boolean "is_playoff"
+    t.datetime "match_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_a_id"], name: "index_games_on_team_a_id"
+    t.index ["team_b_id"], name: "index_games_on_team_b_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "group"
+    t.boolean "black_horse"
+    t.boolean "grey_horse"
+    t.string "army_trip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
@@ -19,6 +54,7 @@ ActiveRecord::Schema.define(version: 20180407082001) do
     t.datetime "updated_at", null: false
     t.string "password_digest"
     t.string "remember_digest"
+    t.boolean "is_admin"
   end
 
 end

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  team_a: MyString
+  team_b: MyString
+  score_a: 1
+  score_b: 1
+  is_playoff: false
+  match_time: 2018-04-08 11:33:05
+
+two:
+  team_a: MyString
+  team_b: MyString
+  score_a: 1
+  score_b: 1
+  is_playoff: false
+  match_time: 2018-04-08 11:33:05

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  group: MyString
+  black_horse: false
+  grey_horse: false
+  army_trip: MyString
+
+two:
+  name: MyString
+  group: MyString
+  black_horse: false
+  grey_horse: false
+  army_trip: MyString

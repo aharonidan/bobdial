@@ -1,0 +1,9 @@
+%header.navbar.navbar-fixed-top.navbar-inverse
+  .container
+    = link_to "Bopdial", '#', id: "logo"
+    %nav
+      %ul.nav.navbar-nav.navbar-right
+        - if not logged_in? 
+          %li= link_to "Log in", '/login'
+        - if logged_in?
+          %li= link_to "Log out", '/logout', method: :delete
