@@ -1,9 +1,12 @@
-%header.navbar.navbar-fixed-top.navbar-inverse
-  .container
-    = link_to "Bopdial", '#', id: "logo"
-    %nav
-      %ul.nav.navbar-nav.navbar-right
-        - if not logged_in? 
-          %li= link_to "Log in", '/login'
-        - if logged_in?
-          %li= link_to "Log out", '/logout', method: :delete
+%nav.navbar.is-dark{"aria-label" => "main navigation", :role => "navigation"}
+  .navbar-brand
+    %a.navbar-item{href: '#'} BOPDIAL
+  .navbar-menu
+    .navbar-start
+      .navbar-item 
+    .navbar-end
+      - if not logged_in? 
+        = link_to "Log in", '/login', class: 'navbar-item'
+      - else
+        %p.navbar-item.right_padded= "Logged as #{current_user.name}"
+        = link_to "Log out", '/logout', method: :delete, id: :logout_button, class: 'navbar-item'

@@ -5,7 +5,7 @@ class CreateTeams < ActiveRecord::Migration[5.1]
       t.string :group
       t.boolean :black_horse
       t.boolean :grey_horse
-      t.string :army_trip
+      t.string :after_army_trip
 
       t.timestamps
     end

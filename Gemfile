@@ -8,7 +8,8 @@ gem 'coffee-rails'
 gem 'jquery-rails' 
 gem 'turbolinks'   
 gem 'haml-rails'
-gem 'bootstrap-sass'
+gem 'bulma-rails', '~> 0.6.2'
+gem 'font-awesome-rails'
 gem 'autoprefixer-rails'
 
 

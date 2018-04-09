@@ -1,14 +1,14 @@
-- provide(:title, 'Sign up')
-%h1 Sign up
-.row
-  .col-md-6.col-md-offset-3
+.columns
+  .column.is-half.is-offset-one-quarter
+    %h1.title Sign up
     = form_for(@user) do |f|
       = f.label :name
-      = f.text_field :name
+      = f.text_field :name, class: 'input'
       = f.label :email
-      = f.email_field :email
+      = f.email_field :email, class: 'input'
       = f.label :password
-      = f.password_field :password
+      = f.password_field :password, class: 'input'
       = f.label :password_confirmation, "Confirmation"
-      = f.password_field :password_confirmation
-      = f.submit "Create my account", class: "btn btn-primary"
+      = f.password_field :password_confirmation, class: 'input'
+      .s20
+      = f.submit "Create my account", class: "button is-primary"
