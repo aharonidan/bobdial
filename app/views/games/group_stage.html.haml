@@ -1,21 +1,12 @@
 %h1.title Group Stage
 = render 'games/group_stage_tabs'
-%form{method: :post, action: '/bets'}
-  - for game in @games
-    .columns
-      .column
-        %label.label.is-pulled-right= game.team_a.name
-      .column.is-1
-        %input.input.one_digit{size: 1, maxlength: 1}
-      .column.is-1
-        %input.input.one_digit{size: 1, maxlength: 1}
-      .column
-        %label.label= game.team_b.name
-      .column.is-5
-        %p= game.match_time.strftime('%A, %d %b %Y %l:%M %p')
-
-
-
-
-
-
+= render '/messages'
+- if @games.any?
+  %form{method: :post, action: '/bets'}
+    %table.table.is-full-width
+      %tbody.tbody
+        = hidden_field_tag :authenticity_token, form_authenticity_token
+        - for game in @games
+          = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
+      
+    %button.button.is-link.is-full-width{type: :submit} Submit

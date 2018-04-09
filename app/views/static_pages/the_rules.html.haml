@@ -1,0 +1,5 @@
+- f = File.open("#{File.dirname(__FILE__)}/the_rules.md")
+- lines = f.read.split("\n")
+- for line in lines
+  %p{dir: "RTL"}
+    = line

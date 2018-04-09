@@ -40,7 +40,7 @@ teams = [
 for team in teams
   Team.create(
     name:            team[:name], 
-    group:           team[:group], 
+    group:           team[:group],
     black_horse:     team[:black_horse], 
     grey_horse:      team[:grey_horse], 
     after_army_trip: team[:after_army_trip]
@@ -59,6 +59,7 @@ CSV.foreach('db/worldcup.csv', headers: true) do |row|
   Game.create(
     team_a:     team_a,
     team_b:     team_b,
+    group: team_a.group,
     match_time: Time.parse(row['Date']),
     stadium:    row['Location']
   )

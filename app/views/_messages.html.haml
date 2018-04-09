@@ -1,0 +1,9 @@
+- flash.each do |name, msg|
+  - if name == 'error'
+    .div.notification.is-danger= msg
+  - elsif name == 'success'
+    .div.notification.is-success= msg
+  - elsif name == 'notice'
+    .div.notification.is-warning= msg
+  - else
+    .div.notification= msg

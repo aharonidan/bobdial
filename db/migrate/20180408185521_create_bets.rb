@@ -5,6 +5,7 @@ class CreateBets < ActiveRecord::Migration[5.1]
       t.references :user, foreign_key: true
       t.integer :team_a_score
       t.integer :team_b_score
+      t.string  :group_or_phase
 
       t.timestamps
     end

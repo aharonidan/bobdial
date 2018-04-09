@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'the_rules', to: 'static_pages#the_rules'
+
+  post 'bets', to: 'bets#create'
+
   get 'games/group_stage/:group', to: 'games#group_stage'
 
   get 'games/round_of_16'
@@ -16,9 +20,10 @@ Rails.application.routes.draw do
   resources :users
 
   get    '/login',   to: 'sessions#new'
-  root 'sessions#new'
 
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+
+  root 'sessions#new'
 
 end
