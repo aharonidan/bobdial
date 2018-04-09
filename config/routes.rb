@@ -1,18 +1,14 @@
 Rails.application.routes.draw do
   
+  get 'the_table', to: 'users#table'
+  
   get 'the_rules', to: 'static_pages#the_rules'
 
   post 'bets', to: 'bets#create'
 
   get 'games/group_stage/:group', to: 'games#group_stage'
 
-  get 'games/round_of_16'
-
-  get 'games/quarter_finals'
-
-  get 'games/semi_finals'
-
-  get 'games/final'
+  get 'games/knockout_stage/:phase', to: 'games#knockout_stage'
 
   get 'sessions/new'
 
@@ -24,6 +20,6 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  root 'sessions#new'
+  root 'users#table'
 
 end

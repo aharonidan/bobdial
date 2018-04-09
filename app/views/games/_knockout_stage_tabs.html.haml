@@ -1,0 +1,10 @@
+.tabs
+  %ul
+    %li{ class: @active_tab == 'round_of_16' ? 'is-active' : '' }
+      %a{href: '/games/knockout_stage/round_of_16'} Round of 16
+    %li{ class: @active_tab == 'quarter_finals' ? 'is-active' : '' }
+      %a{href: '/games/knockout_stage/quarter_finals'} Quarter finals
+    %li{ class: @active_tab == 'semi_finals' ? 'is-active' : '' }
+      %a{href: '/games/knockout_stage/semi_finals'} Semi Finals
+    %li{ class: @active_tab == 'final' ? 'is-active' : '' }
+      %a{href: '/games/knockout_stage/final'} Final

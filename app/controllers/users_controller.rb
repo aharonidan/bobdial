@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :redirect_to_root, unless: :logged_in?, only: [:show]
+  before_action :redirect_to_login, unless: :logged_in?, only: [:show, :table]
 
   def new
   	@user = User.new
@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def table
+    @users = User.all
   end
 
   private

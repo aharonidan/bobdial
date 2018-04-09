@@ -9,4 +9,4 @@
   %td
     %label.label= game.team_b.name
   %td
-    %p= game.match_time.strftime('%A, %d %b %Y %l:%M %p')
+    %p= game.match_time.strftime('%A, %B %d, %H:%M') if game.match_time

@@ -1,0 +1,7 @@
+%h1.title Table
+%table.table
+  %tbody
+    - for user in @users
+      %tr
+        %td= user.name
+        %td= user.email

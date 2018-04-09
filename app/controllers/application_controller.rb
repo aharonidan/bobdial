@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-  def redirect_to_root
-    redirect_to root_path
+  def redirect_to_login
+    redirect_to login_path
   end
 end

@@ -6,7 +6,7 @@
   %h2.subtitle
     Log in
   
-  = render 'messages'
+  = render '/messages'
 
   = form_for(:session, url: login_path) do |f|
     .field
@@ -19,7 +19,7 @@
       .control
         = f.password_field :password, class: 'input'
 
-    = f.submit "Log in", class: "button.is-link"
+    = f.submit "Log in", class: "button is-link"
   
   .s20
   %p

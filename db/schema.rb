@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409143110) do
+ActiveRecord::Schema.define(version: 20180409165226) do
 
   create_table "bets", force: :cascade do |t|
     t.integer "game_id"
@@ -58,6 +58,12 @@ ActiveRecord::Schema.define(version: 20180409143110) do
     t.string "password_digest"
     t.string "remember_digest"
     t.boolean "is_admin"
+    t.string "black_horse"
+    t.string "grey_horse"
+    t.string "after_army_trip"
+    t.string "champion"
+    t.string "top_scorer"
+    t.integer "points"
   end
 
 end

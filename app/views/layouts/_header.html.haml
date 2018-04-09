@@ -1,18 +1,18 @@
-%nav.navbar.is-dark{"aria-label" => "main navigation", :role => "navigation"}
+%nav.navbar.is-dark{"aria-label" => "main navigation", role: "navigation"}
   .navbar-brand
     %a.navbar-item{href: '#'} BOPDIAL
-    %a.navbar-burger#navbar-burger-id{"aria-expanded" => "false", "aria-label" => "menu", "data-target" => "navMenu", :role => "button"}
+    %a.navbar-burger#navbar-burger-id{"aria-expanded" => "false", "aria-label" => "menu", "data-target" => "navMenu", role: "button"}
       %span{"aria-hidden" => "true"}
       %span{"aria-hidden" => "true"}
       %span{"aria-hidden" => "true"}
   #navbar-menu-id.navbar-menu
     .navbar-start
-      %a.navbar-item{:href => "#section-1"} The Rules
-      %a.navbar-item{:href => "#section-2"} The Table
-      %a.navbar-item{:href => 'games/group_stage/a'} Group Stage
-      %a.navbar-item{:href => "#section-3"} Knockout Stage
+      %a.navbar-item{href: '/the_rules'} The Rules
+      %a.navbar-item{href: '/the_table'} The Table
+      %a.navbar-item{href: '/games/group_stage/a'} Group Stage
+      %a.navbar-item{href: '/games/knockout_stage/round_of_16'} Knockout Stage
     .navbar-end
-      %a.navbar-item.is-hidden-touch{:href => "#where-section"}
+      %a.navbar-item.is-hidden-touch{href: "#where-section"}
         %i.far.fa-clock.fa-lg
 
     .navbar-end
