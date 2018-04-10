@@ -1,42 +1,8 @@
 %h1.title Horses
+= render '/messages'
 %form{method: :post, action: '/horses'}
-  %table.table.is-full-width
-    %tbody
-      %tr
-        %td
-          %label.label{for: :black_horse} Black Horse
-        %td
-          .select
-            %select{name: :black_horse}
-              %option{value: ''} Select
-              - for black_horse in Team.black_horses
-                %option{value: black_horse }= black_horse.titleize
-      %tr
-        %td
-          %label.label{for: :grey_horse} Grey Horse
-        %td
-          .select
-            %select{name: :grey_horse}
-              %option{value: ''} Select
-              - for grey_horse in Team.grey_horses
-                %option{value: grey_horse }= grey_horse.titleize
-
-      %tr
-        %td
-          %label.label{for: :after_army_trip} After the army trip
-        %td
-          .select
-            %select{name: :after_army_trip}
-              %option{value: ''} Select
-              - for after_army_trip in Team.after_army_trips
-                %option{value: after_army_trip }= after_army_trip.titleize
-
-      %tr
-        %td
-          %label.label{for: :champion} Champion
-        %td
-          .select
-            %select{name: :champion}
-              %option{value: ''} Select
-              - for team in Team.team_names
-                %option{value: team }= team.titleize
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+  - if horses_editable?
+    = render 'horses_form'
+  - else
+    = render 'horses_show'

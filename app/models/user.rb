@@ -1,5 +1,12 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token
+	
+  belongs_to :black_horse, class_name: 'Team', optional: true
+  belongs_to :grey_horse,  class_name: 'Team', optional: true
+  belongs_to :champion,    class_name: 'Team', optional: true
+
+  validate :horses_do_not_change_after_deadline, on: :update
+
+  attr_accessor :remember_token
 	before_save { self.email = email.downcase }
 	
 	validates :name,  presence: true, length: { maximum: 50 }
@@ -7,6 +14,12 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   has_secure_password
+
+  def horses_do_not_change_after_deadline
+    if Game.horses_not_editable? and (black_horse_id_changed? or grey_horse_id_changed? or champion_id_changed? or top_scorer_changed? or after_army_trip_changed?)
+      errors.add(:black_horse_id, "Change of horses after deadline not allowed!")
+    end
+  end
 
 
   # Returns the hash digest of the given string.

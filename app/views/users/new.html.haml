@@ -1,5 +1,6 @@
 .columns
   .column.is-half.is-offset-one-quarter
+    = render '/messages'
     %h1.title Sign up
     = form_for(@user) do |f|
       = f.label :name

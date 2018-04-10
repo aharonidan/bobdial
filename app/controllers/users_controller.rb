@@ -27,6 +27,20 @@ class UsersController < ApplicationController
   end
 
   def update_horses
+
+    if Game.horses_editable?
+      current_user.update(
+        black_horse_id: params[:black_horse_id],
+        grey_horse_id: params[:grey_horse_id],
+        champion_id: params[:champion_id],
+        top_scorer: params[:top_scorer],
+        after_army_trip: params[:after_army_trip]
+      )
+      flash[:success] = "Submitted Successfully"
+    else
+      flash[:error] = "Deadline has passed, sorry :("
+    end
+    redirect_to '/horses'
   end
 
   private

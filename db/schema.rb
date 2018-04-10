@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180410085144) do
+ActiveRecord::Schema.define(version: 20180410180136) do
 
   create_table "bets", force: :cascade do |t|
     t.integer "game_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20180410085144) do
     t.datetime "updated_at", null: false
     t.string "stadium"
     t.boolean "not_editable"
+    t.datetime "deadline"
     t.index ["team_a_id"], name: "index_games_on_team_a_id"
     t.index ["team_b_id"], name: "index_games_on_team_b_id"
   end
@@ -66,6 +67,9 @@ ActiveRecord::Schema.define(version: 20180410085144) do
     t.string "champion"
     t.string "top_scorer"
     t.integer "points"
+    t.integer "black_horse_id"
+    t.integer "grey_horse_id"
+    t.integer "champion_id"
   end
 
 end

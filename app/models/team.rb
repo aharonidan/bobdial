@@ -1,14 +1,15 @@
 class Team < ApplicationRecord
-  def self.team_names
-    Team.all.select(:name).map(&:name)
+  
+  def self.all_teams
+    Team.where.not(group: 'place_holder')
   end
 
   def self.black_horses
-    Team.where(black_horse: true).map(&:name)
+    Team.where(black_horse: true)
   end
 
   def self.grey_horses
-    Team.where(grey_horse: true).map(&:name)
+    Team.where(grey_horse: true)
   end
 
   def self.after_army_trips

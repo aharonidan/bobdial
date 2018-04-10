@@ -2,8 +2,7 @@ Rails.application.routes.draw do
   
   get  'horses', to: 'users#horses'
   post 'horses', to: 'users#update_horses'
-
-  resources :games
+  
   post 'games/update', to: 'games#update'
 
   get 'admin/settings'

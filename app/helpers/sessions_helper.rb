@@ -27,6 +27,10 @@ module SessionsHelper
     current_user && current_user.is_admin
   end
 
+  def horses_editable?
+    Game.horses_editable?
+  end
+
   # Logs out the current user.
   def log_out
     forget(current_user)

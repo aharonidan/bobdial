@@ -22,24 +22,15 @@ class GamesController < ApplicationController
   end
 
   def update
-    params[:games].each do |game_id, attrs|  
+    params[:games].each do |game_id, attrs|
       game = Game.find(game_id)
-      game.update(score_a: attrs[:score_a], score_b: attrs[:score_b], not_editable: attrs[:not_editable])
+      to_update = { score_a: attrs[:score_a], score_b: attrs[:score_b], not_editable: attrs[:not_editable]}
+      to_update[:team_a_id] = attrs[:team_a_id] if attrs[:team_a_id]
+      to_update[:team_b_id] = attrs[:team_b_id] if attrs[:team_b_id]
+
+      game.update(to_update)
     end
 
-    flash[:success] = "Submitted Successfully"
-    redirect_to '/admin/settings'
-  end
-
-  def new
-    @game = Game.new
-  end
-
-  def create
-    team_a = Team.where(name: params[:game][:team_a]).take
-    team_b = Team.where(name: params[:game][:team_b]).take
-
-    Game.create(team_a: team_a, team_b: team_b, match_time: params[:game][:match_time], group: params[:game][:group], is_playoff: true)
     flash[:success] = "Submitted Successfully"
     redirect_to '/admin/settings'
   end
