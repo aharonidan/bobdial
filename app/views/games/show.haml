@@ -1,0 +1,18 @@
+.s20
+%table.table.is-hoverable
+  %thead
+    %th
+    %th= @game.team_a.name.titleize
+    %th= @game.score_a
+    %th= @game.score_b
+    %th= @game.team_b.name.titleize
+    %th Points
+  %tbody
+    - for bet in @bets
+      %tr
+        %td= bet.user.name
+        %td
+        %td= bet.team_a_score
+        %td= bet.team_b_score
+        %td
+        %td.text_centered= bet.score

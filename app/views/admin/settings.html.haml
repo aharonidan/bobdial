@@ -1,0 +1,17 @@
+%h1.title Admin settings
+= render '/messages'
+
+%a.button{href: '/games/new'}
+  %span.icon
+    %i.fa.fa-plus
+  %span Add game
+.s20
+
+%form{method: :post, action: '/games/update'}
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+  %table.table.is-full-width
+    %tbody.tbody
+      - for game in @games
+        = render partial: 'games/form', locals: {game: game}
+
+  %button.button.is-link.is-full-width{type: :submit} Submit

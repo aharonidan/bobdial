@@ -39,7 +39,7 @@ teams = [
 
 for team in teams
   Team.create(
-    name:            team[:name], 
+    name:            team[:name].parameterize(separator: '_'), 
     group:           team[:group],
     black_horse:     team[:black_horse], 
     grey_horse:      team[:grey_horse], 
@@ -51,8 +51,8 @@ require 'csv'
 require 'time'
 
 CSV.foreach('db/worldcup.csv', headers: true) do |row|
-  team_a = Team.where(name: row['Home Team']).take
-  team_b = Team.where(name: row['Away Team']).take
+  team_a = Team.where(name: row['Home Team'].parameterize(separator: '_')).take
+  team_b = Team.where(name: row['Away Team'].parameterize(separator: '_')).take
 
   next unless team_a and team_b
   

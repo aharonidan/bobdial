@@ -1,0 +1,17 @@
+%tr
+  %input{type: :hidden, name: :game_id, value: game.id}
+  %td.narrow
+    %img.flag_icon{src: "/flags/#{game.team_a.name}.png"}
+    %label= game.team_a.name.titleize
+  %td
+    %input.input.one_digit{name: "games[#{game.id}][score_a]", size: 1, maxlength: 1, value: game.score_a }
+  %td
+    %input.input.one_digit{name: "games[#{game.id}][score_b]", size: 1, maxlength: 1, value: game.score_b}
+  %td
+    %img.flag_icon{src: "/flags/#{game.team_b.name}.png"}
+    %label= game.team_b.name.titleize
+  %td
+    %i.icon.fa.fa-lock
+    %input{name: "games[#{game.id}][not_editable]", type: :checkbox, checked: game.not_editable?}
+  %td
+    %p= game.match_time.strftime('%A, %B %d, %H:%M') if game.match_time

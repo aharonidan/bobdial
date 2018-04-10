@@ -1,0 +1,29 @@
+
+%h1.title Create Game
+= render '/messages'
+= form_for(@game) do |f|
+  %table.table
+    %tbody
+    %td
+      = f.label :home_team
+    %td
+      .select
+        = f.select :team_a, options_for_select(Team.team_names)
+    %td
+      = f.label :away_team
+    %td
+      .select
+        = f.select :team_b, options_for_select(Team.team_names)
+    %td
+      = f.label :phase
+    %td
+      .select
+        = f.select :group, options_for_select(Game.phases)
+    %td
+      = f.label :match_time
+    %td
+      = f.text_field :match_time, type: 'datetime-local', class: 'input'
+
+
+  .s20
+  = f.submit "Create game", class: "button is-link"

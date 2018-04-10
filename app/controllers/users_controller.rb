@@ -23,6 +23,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def horses
+  end
+
+  def update_horses
+  end
+
   private
 
     def user_params

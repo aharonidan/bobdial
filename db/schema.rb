@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180409165226) do
+ActiveRecord::Schema.define(version: 20180410085144) do
 
   create_table "bets", force: :cascade do |t|
     t.integer "game_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20180409165226) do
     t.string "group_or_phase"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "points"
     t.index ["game_id"], name: "index_bets_on_game_id"
     t.index ["user_id", "game_id"], name: "index_bets_on_user_id_and_game_id", unique: true
     t.index ["user_id"], name: "index_bets_on_user_id"
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 20180409165226) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "stadium"
+    t.boolean "not_editable"
     t.index ["team_a_id"], name: "index_games_on_team_a_id"
     t.index ["team_b_id"], name: "index_games_on_team_b_id"
   end

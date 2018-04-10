@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   
+  get  'horses', to: 'users#horses'
+  post 'horses', to: 'users#update_horses'
+
+  resources :games
+  post 'games/update', to: 'games#update'
+
+  get 'admin/settings'
+
+  get 'games/:game_id', to: 'games#bets'
+
   get 'the_table', to: 'users#table'
   
   get 'the_rules', to: 'static_pages#the_rules'

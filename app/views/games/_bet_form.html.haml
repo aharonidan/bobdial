@@ -1,12 +1,17 @@
 %tr
   %input{type: :hidden, name: :game_id, value: game.id}
+  %td.narrow
+    %img.flag_icon{src: "/flags/#{game.team_a.name}.png"}
+    %label= game.team_a.name.titleize
   %td
-    %label.label.is-pulled-right= game.team_a.name
+    %input.input.one_digit{name: "bets[#{game.id}][team_a_score]", size: 1, maxlength: 1, value: bet ? bet.team_a_score : '', disabled: game.not_editable? }
   %td
-    %input.input.one_digit{name: "bets[#{game.id}][team_a_score]", size: 1, maxlength: 1, value: bet ? bet.team_a_score : ''}
+    %input.input.one_digit{name: "bets[#{game.id}][team_b_score]", size: 1, maxlength: 1, value: bet ? bet.team_b_score : '', disabled: game.not_editable? }
   %td
-    %input.input.one_digit{name: "bets[#{game.id}][team_b_score]", size: 1, maxlength: 1, value: bet ? bet.team_b_score : ''}
-  %td
-    %label.label= game.team_b.name
+    %img.flag_icon{src: "/flags/#{game.team_b.name}.png"}
+    %label= game.team_b.name.titleize
   %td
     %p= game.match_time.strftime('%A, %B %d, %H:%M') if game.match_time
+  %td
+    - if game.not_editable? 
+      %a.button.is-link{href: "/games/#{game.id}" } View Bets
