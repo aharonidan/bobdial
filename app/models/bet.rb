@@ -8,7 +8,22 @@ class Bet < ApplicationRecord
     end
   end
 
-  def score
-    1
+  def team_a_wins?
+    score_a > score_b
+  end
+
+  def team_b_wins?
+    score_a < score_b
+  end
+
+  def draw?
+    score_a == score_b
+  end
+
+  def points
+    return unless game.played?
+
+
+
   end
 end

@@ -1,15 +1,15 @@
 %tr
   %input{type: :hidden, name: :game_id, value: game.id}
   %td.narrow
-    - if game.team_a.group != 'place_holder'
+    - unless game.place_holder?
       %img.flag_icon{src: "/flags/#{game.team_a.name}.png"}
     %label= game.team_a.name.titleize
   %td
-    %input.input.one_digit{name: "bets[#{game.id}][team_a_score]", size: 1, maxlength: 1, value: bet ? bet.team_a_score : '', disabled: game.not_editable? }
+    %input.input.one_digit{name: "bets[#{game.id}][score_a]", size: 1, maxlength: 1, value: bet ? bet.score_a : '', disabled: game.not_editable? }
   %td
-    %input.input.one_digit{name: "bets[#{game.id}][team_b_score]", size: 1, maxlength: 1, value: bet ? bet.team_b_score : '', disabled: game.not_editable? }
+    %input.input.one_digit{name: "bets[#{game.id}][score_b]", size: 1, maxlength: 1, value: bet ? bet.score_b : '', disabled: game.not_editable? }
   %td
-    - if game.team_b.group != 'place_holder'
+    - unless game.place_holder?
       %img.flag_icon{src: "/flags/#{game.team_b.name}.png"}
     %label= game.team_b.name.titleize
   %td

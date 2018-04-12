@@ -3,11 +3,11 @@
 one:
   game: one
   user: one
-  team_a_score: 1
-  team_b_score: 1
+  score_a: 1
+  score_b: 1
 
 two:
   game: two
   user: two
-  team_a_score: 1
-  team_b_score: 1
+  score_a: 1
+  score_b: 1

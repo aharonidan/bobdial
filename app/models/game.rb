@@ -10,6 +10,10 @@ class Game < ApplicationRecord
     not not_editable?
   end
 
+  def place_holder?
+    team_a.group == 'place_holder'
+  end
+
   def self.horses_editable?
     first.editable?
   end
@@ -20,5 +24,21 @@ class Game < ApplicationRecord
 
   def self.phases
     ['round_of_16', 'quarter_finals', 'semi_finals', 'finals']
+  end
+
+  def played?
+    score_a.present? and score_b.present?
+  end
+
+  def team_a_wins?
+    score_a > score_b
+  end
+
+  def team_b_wins?
+    score_a < score_b
+  end
+
+  def draw?
+    score_a == score_b
   end
 end

@@ -1,4 +1,4 @@
 class StaticPagesController < ApplicationController
-  def the_rules
+  def rules
   end
 end

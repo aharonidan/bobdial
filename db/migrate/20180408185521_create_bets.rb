@@ -3,9 +3,9 @@ class CreateBets < ActiveRecord::Migration[5.1]
     create_table :bets do |t|
       t.references :game, foreign_key: true
       t.references :user, foreign_key: true
-      t.integer :team_a_score
-      t.integer :team_b_score
-      t.string  :group_or_phase
+      t.integer :score_a
+      t.integer :score_b
+      t.string  :group
 
       t.timestamps
     end

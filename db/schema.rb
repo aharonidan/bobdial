@@ -15,9 +15,9 @@ ActiveRecord::Schema.define(version: 20180410180136) do
   create_table "bets", force: :cascade do |t|
     t.integer "game_id"
     t.integer "user_id"
-    t.integer "team_a_score"
-    t.integer "team_b_score"
-    t.string "group_or_phase"
+    t.integer "score_a"
+    t.integer "score_b"
+    t.string "group"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "points"

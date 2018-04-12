@@ -31,6 +31,17 @@ module SessionsHelper
     Game.horses_editable?
   end
 
+  def after_army_options(continent)
+    case continent
+    when 'asia'
+      'Asia - Japan, Korea Republic, Iran, Saudi Arabia, Russia'
+    when 'central_america'
+      'Central America - Mexico, Panama, Costa Rica'
+    when 'africa'
+      "Africa - Nigeria, Senegal, Egypt, Morocco, Tunisia"
+    end
+  end
+
   # Logs out the current user.
   def log_out
     forget(current_user)
