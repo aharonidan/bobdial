@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'standings', to: 'users#table'
 
   get 'rules', to: 'static_pages#rules'
+  get 'unauthorized', to: 'static_pages#unauthorized'
 
   post 'bets', to: 'bets#create'
 

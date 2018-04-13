@@ -18,7 +18,11 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    @bets = Bet.where(game: @game)
+    if @game.editable?
+      redirect_to '/unauthorized'
+    else
+      @bets = Bet.where(game: @game)
+    end
   end
 
   def update

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   before_action :redirect_to_login, unless: :logged_in?, only: [:show, :table]
 
   def new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to @user
+      redirect_to '/table'
     else
       render 'new'
     end

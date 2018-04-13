@@ -6,6 +6,10 @@ class Game < ApplicationRecord
     Time.now > deadline || self.not_editable
   end
 
+  def bets
+    @bets ||= Bet.where(game_id: id)
+  end
+
   def editable?
     not not_editable?
   end
@@ -22,10 +26,6 @@ class Game < ApplicationRecord
     first.not_editable?
   end
 
-  def self.phases
-    ['round_of_16', 'quarter_finals', 'semi_finals', 'finals']
-  end
-
   def played?
     score_a.present? and score_b.present?
   end
@@ -40,5 +40,9 @@ class Game < ApplicationRecord
 
   def draw?
     score_a == score_b
+  end
+
+  def playoff?
+    is_playoff
   end
 end
