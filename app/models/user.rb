@@ -7,7 +7,10 @@ class User < ApplicationRecord
   validate :horses_do_not_change_after_deadline, on: :update
 
   attr_accessor :remember_token
-	before_save { self.email = email.downcase }
+	before_save do
+    self.email = email.downcase
+    self.top_scorer = top_scorer.parameterize(separator: '_') if top_scorer
+  end
 
 	validates :name,  presence: true, length: { maximum: 50 }
 
@@ -98,7 +101,7 @@ class User < ApplicationRecord
   end
 
   def top_scorer_points
-    return 8 if top_scorer.present? and Setting.where(name: 'top_scorer', value: top_scorer.parameterize(separator: '_')).any?
+    return 8 if top_scorer.present? and Setting.where(name: 'top_scorer', value: top_scorer).any?
     return 0
   end
 

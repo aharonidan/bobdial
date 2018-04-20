@@ -24,7 +24,7 @@
 		%tr
 			%td
 				%label.label Top Scorer
-			%td= current_user.top_scorer
+			%td= current_user.top_scorer.titleize if current_user.top_scorer
 		%tr
 			%td
 				%label.label After army trip
