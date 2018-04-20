@@ -54,4 +54,9 @@ module SessionsHelper
     cookies.delete(:user_id)
     cookies.delete(:remember_token)
   end
+
+  def bopdial_started?
+    return @started if @started
+    @started = Game.first.not_editable?
+  end
 end

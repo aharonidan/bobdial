@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   post 'games/update', to: 'games#update'
 
+  delete 'admin/horses/:id', to: 'admin#delete'
+  post 'admin/horses', to: 'admin#create'
+  get 'admin/horses'
   get 'admin/settings'
 
   get 'games/:id', to: 'games#show'
@@ -23,7 +26,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   get  '/signup',  to: 'users#new'
-  resources :users
+  post '/users', to: 'users#create'
 
   get    '/login',   to: 'sessions#new'
 

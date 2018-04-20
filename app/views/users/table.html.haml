@@ -1,7 +1,36 @@
 %h1.title Table
-%table.table
-  %tbody
-    - for user in @users
-      %tr
-        %td= user.name
-        %td= user.email
+%table.table.is-full-width
+	%thead
+		%th Name
+		%th Points
+		%th Bingo
+		%th Donkey
+		%th Black Horse
+		%th Grey Horse
+		%th Winner
+		%th Top scorer
+		%th After Army
+	%tbody
+		- for user in @users
+			%tr
+				%td= user.name
+				%td= user.points
+				%td= user.bingo
+				%td= user.donkey
+				%td
+					- if user.black_horse and bopdial_started?
+						%img.flag_icon{src: "/flags/#{user.black_horse.name}.png"}
+						= user.black_horse.name.titleize
+
+				%td
+					- if user.grey_horse and bopdial_started?
+						%img.flag_icon{src: "/flags/#{user.grey_horse.name}.png"}
+						= user.grey_horse.name.titleize
+
+				%td
+					- if user.champion and bopdial_started?
+						%img.flag_icon{src: "/flags/#{user.champion.name}.png"}
+						= user.champion.name.titleize
+
+				%td= user.top_scorer.titleize if user.top_scorer and bopdial_started?
+				%td= user.after_army_trip.titleize if user.after_army_trip and bopdial_started?

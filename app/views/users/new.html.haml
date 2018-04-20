@@ -1,15 +1,25 @@
-.columns
-  .column.is-half.is-offset-one-quarter
-    = render '/messages'
-    %h1.title Sign up
-    = form_for(@user) do |f|
-      = f.label :name
-      = f.text_field :name, class: 'input'
-      = f.label :email
-      = f.email_field :email, class: 'input'
-      = f.label :password
-      = f.password_field :password, class: 'input'
-      = f.label :password_confirmation, "Confirmation"
-      = f.password_field :password_confirmation, class: 'input'
-      .s20
-      = f.submit "Create my account", class: "button is-link"
+%section.hero.is-success.is-fullheight
+  .hero-body
+    .container.has-text-centered
+      .column.is-4.is-offset-4
+        %h3.title.has-text-grey Sign Up
+        = render '/messages'
+        .box
+          %figure.avatar
+            %img{src: "https://placehold.it/128x128"}
+          = form_for(@user) do |f|
+            .field
+              .control
+                = f.text_field :name, class: 'input is-large', autofocus: "", placeholder: "Your Name", required: true
+            .field
+              .control
+                = f.email_field :email, class: 'input is-large', placeholder: "Your Email", type: "email", required: true
+            .field
+              .control
+                = f.password_field :password, class: 'input is-large', placeholder: "Your Password", type: "password", required: true
+            .field
+              .control
+                = f.password_field :password_confirmation, class: 'input is-large', placeholder: "Password Confirmation", type: "password", required: true
+            = f.submit "Sign Up", class: "button is-block is-info is-large is-fullwidth"
+        %p.has-text-grey
+          %a{href: login_path} Login

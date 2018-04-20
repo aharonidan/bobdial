@@ -1,0 +1,42 @@
+%h1.title Admin - Horses Settings
+
+= render '/messages'
+
+%a.button.is-text{href: '/admin/settings'} Admin games settings
+.s20
+
+
+-if @settings.any?
+  %table.table.is-full-width
+    %thead
+      %th Category
+      %th Value
+      %th
+
+    %tbody
+      - for setting in @settings
+        %tr
+          %td= setting.name.titleize
+          %td= setting.value.titleize
+          %td= link_to "Delete", "/admin/horses/#{setting.id}", method: :delete, class: 'button is-danger'
+
+
+.s40
+%h2.subtitle Create Setting
+%form{action: '/admin/horses', method: :post}
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+  %table.table
+    %tbody
+      %tr
+        %td
+          .select
+            %select{name: 'name'}
+              - for category in ['black_horse', 'grey_horse', 'champion', 'top_scorer', 'after_army_trip']
+                %option{value: category}= category.titleize
+        %td
+          %input.input{name: :value}
+  %button.button.is-link{type: :submit} Submit
+
+
+
+

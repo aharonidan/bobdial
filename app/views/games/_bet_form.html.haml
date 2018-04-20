@@ -13,7 +13,10 @@
       %img.flag_icon{src: "/flags/#{game.team_b.name}.png"}
     %label= game.team_b.name.titleize
   %td
-    %p= game.match_time.strftime('%A, %B %d, %H:%M') if game.match_time
-  %td
     - if game.not_editable?
       %a.button.is-link{href: "/games/#{game.id}" } View Bets
+  %td
+    %p= game.match_time.strftime('%A, %B %d, %H:%M') if game.match_time
+  %td
+    %p= game.stadium
+

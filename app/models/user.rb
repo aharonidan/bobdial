@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	
+
   belongs_to :black_horse, class_name: 'Team', optional: true
   belongs_to :grey_horse,  class_name: 'Team', optional: true
   belongs_to :champion,    class_name: 'Team', optional: true
@@ -8,9 +8,9 @@ class User < ApplicationRecord
 
   attr_accessor :remember_token
 	before_save { self.email = email.downcase }
-	
+
 	validates :name,  presence: true, length: { maximum: 50 }
-  
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
   has_secure_password
@@ -45,9 +45,78 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  def bets
+    return @bets if @bets
+    @bets = Bet.where(user_id: id)
+  end
+
   # Returns true if the given token matches the digest.
   def authenticated?(remember_token)
   	return false if remember_digest.nil?
     BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
+
+  def self.calculate_points
+    User.all.each(&:calculate_points)
+  end
+
+
+  def calculate_points
+    sum = 0
+    for bet in bets
+      sum += bet.points
+    end
+
+    sum += black_horse_points
+    sum += grey_horse_points
+    sum += after_army_trip_points
+    sum += champion_points
+    sum += top_scorer_points
+
+    update(points: sum)
+
+  end
+
+  def black_horse_points
+    return 8 if black_horse and Setting.where(name: 'black_horse', value: black_horse.name).any?
+    return 0
+  end
+
+  def grey_horse_points
+    return 8 if grey_horse and Setting.where(name: 'grey_horse', value: grey_horse.name).any?
+    return 0
+  end
+
+  def after_army_trip_points
+    return 5 if after_army_trip.present? and Setting.where(name: 'after_army_trip', value: after_army_trip).any?
+    return 0
+  end
+
+  def champion_points
+    return 8 if champion and Setting.where(name: 'champion', value: champion.name).any?
+    return 0
+  end
+
+  def top_scorer_points
+    return 8 if top_scorer.present? and Setting.where(name: 'top_scorer', value: top_scorer.parameterize(separator: '_')).any?
+    return 0
+  end
+
+  def donkey
+    sum = 0
+
+    for bet in bets
+      sum += 1 if bet.donkey?
+    end
+    sum
+  end
+
+    def bingo
+    sum = 0
+
+    for bet in bets
+      sum += 1 if bet.bingo?
+    end
+    sum
   end
 end

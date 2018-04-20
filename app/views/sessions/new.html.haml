@@ -1,26 +1,20 @@
-/ .columns
-.center
-  .s50
-  %h1.title
-    Bopdial
-  %h2.subtitle
-    Log in
-  
-  = render '/messages'
-
-  = form_for(:session, url: login_path) do |f|
-    .field
-      = f.label :email
-      .control
-        = f.email_field :email, class: 'input'
-
-    .field
-      = f.label :password
-      .control
-        = f.password_field :password, class: 'input'
-
-    = f.submit "Log in", class: "button is-link"
-  
-  .s20
-  %p
-    New user? #{link_to "Sign up now!", signup_path}
+%section.hero.is-success.is-fullheight
+  .hero-body
+    .container.has-text-centered
+      .column.is-4.is-offset-4
+        %h3.title.has-text-grey Login
+        %p.subtitle.has-text-grey Please login to proceed.
+        = render '/messages'
+        .box
+          %figure.avatar
+            %img{src: "https://placehold.it/128x128"}
+          = form_for(:session, url: login_path) do |f|
+            .field
+              .control
+                = f.email_field :email, class: 'input is-large', autofocus: "", placeholder: "Your Email", type: "email", required: true
+            .field
+              .control
+                = f.password_field :password, class: 'input is-large', placeholder: "Your Password", type: "password", required: true
+            = f.submit "Login", class: "button is-block is-info is-large is-fullwidth"
+        %p.has-text-grey
+          %a{href: signup_path} Sign Up
