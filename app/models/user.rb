@@ -1,12 +1,15 @@
 class User < ApplicationRecord
 
+  belongs_to :account
   belongs_to :black_horse, class_name: 'Team', optional: true
   belongs_to :grey_horse,  class_name: 'Team', optional: true
   belongs_to :champion,    class_name: 'Team', optional: true
+  has_many :bets
 
   validate :horses_do_not_change_after_deadline, on: :update
 
   attr_accessor :remember_token
+
 	before_save do
     self.email = email.downcase
     self.top_scorer = top_scorer.parameterize(separator: '_') if top_scorer
@@ -23,7 +26,6 @@ class User < ApplicationRecord
       errors.add(:black_horse_id, "Change of horses after deadline not allowed!")
     end
   end
-
 
   # Returns the hash digest of the given string.
   def self.digest(string)
@@ -46,11 +48,6 @@ class User < ApplicationRecord
   # Forgets a user.
   def forget
     update_attribute(:remember_digest, nil)
-  end
-
-  def bets
-    return @bets if @bets
-    @bets = Bet.where(user_id: id)
   end
 
   # Returns true if the given token matches the digest.

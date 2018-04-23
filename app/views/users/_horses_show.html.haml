@@ -1,31 +1,31 @@
 %table.table.is-full-width
-	%tbody
-		%tr
-			%td
-				%label.label Black Horse
-			%td
-				- if current_user.black_horse
-					%img.flag_icon{src: "/flags/#{current_user.black_horse.name}.png"}
-					= current_user.black_horse.name.titleize
-		%tr
-			%td
-				%label.label Grey Horse
-			%td
-				- if current_user.grey_horse
-					%img.flag_icon{src: "/flags/#{current_user.grey_horse.name}.png"}
-					= current_user.grey_horse.name.titleize
-		%tr
-			%td
-				%label.label Champion
-			%td
-				- if current_user.champion
-					%img.flag_icon{src: "/flags/#{current_user.champion.name}.png"}
-					= current_user.champion.name.titleize
-		%tr
-			%td
-				%label.label Top Scorer
-			%td= current_user.top_scorer.titleize if current_user.top_scorer
-		%tr
-			%td
-				%label.label After army trip
-			%td= current_user.after_army_trip.titleize if current_user.after_army_trip
+  %tbody
+    %tr
+      %td
+        %label.label Black Horse
+      %td
+        - if current_user.black_horse
+          %img.flag_icon{src: "/flags/#{current_user.black_horse.name}.png"}
+          = current_user.black_horse.name.titleize
+    %tr
+      %td
+        %label.label Grey Horse
+      %td
+        - if current_user.grey_horse
+          %img.flag_icon{src: "/flags/#{current_user.grey_horse.name}.png"}
+          = current_user.grey_horse.name.titleize
+    %tr
+      %td
+        %label.label Winner
+      %td
+        - if current_user.champion
+          %img.flag_icon{src: "/flags/#{current_user.champion.name}.png"}
+          = current_user.champion.name.titleize
+    %tr
+      %td
+        %label.label Top Scorer
+      %td= current_user.top_scorer.titleize if current_user.top_scorer
+    %tr
+      %td
+        %label.label After army trip
+      %td= current_user.after_army_trip.titleize if current_user.after_army_trip

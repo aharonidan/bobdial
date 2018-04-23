@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420134429) do
+ActiveRecord::Schema.define(version: 20180422090137) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "bets", force: :cascade do |t|
     t.integer "game_id"
@@ -77,6 +83,8 @@ ActiveRecord::Schema.define(version: 20180420134429) do
     t.integer "black_horse_id"
     t.integer "grey_horse_id"
     t.integer "champion_id"
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_users_on_account_id"
   end
 
 end

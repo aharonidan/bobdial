@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def table
-    @users = User.all
+    @users = User.all.order(points: :desc)
   end
 
   def horses
