@@ -16,13 +16,13 @@ class UsersController < ApplicationController
       flash.discard
       redirect_to login_path
     else
-      flash[:error] = 'Invalid Email'
+      flash[:error] = @user.errors.full_messages
       render 'new'
     end
   end
 
   def table
-    @users = User.all.order(points: :desc)
+    @users = current_account.users.all.order(points: :desc)
   end
 
   def horses
@@ -48,6 +48,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :account_name)
     end
 end

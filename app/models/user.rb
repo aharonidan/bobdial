@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validate :horses_do_not_change_after_deadline, on: :update
 
   attr_accessor :remember_token
+  attr_reader :account_name
 
 	before_save do
     self.email = email.downcase
@@ -118,5 +119,9 @@ class User < ApplicationRecord
       sum += 1 if bet.bingo?
     end
     sum
+  end
+
+  def account_name= value
+    self.account = Account.where(name: value).first
   end
 end

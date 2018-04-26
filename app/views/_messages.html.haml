@@ -1,9 +1,7 @@
 - flash.each do |name, msg|
-  - if name == 'error'
-    .div.notification.is-danger= msg
-  - elsif name == 'success'
-    .div.notification.is-success= msg
-  - elsif name == 'notice'
-    .div.notification.is-warning= msg
+  - if msg.is_a? Array
+    .notification{class: message_class(name)}
+      - for message in msg
+        %p= message
   - else
-    .div.notification= msg
+    .notification{class: message_class(name)}= msg

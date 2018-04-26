@@ -15,8 +15,8 @@
 			%tr
 				%td= user.name
 				%td= user.points
-				%td= user.bingo
-				%td= user.donkey
+				%td= user.bingo if bopdial_started?
+				%td= user.donkey if bopdial_started?
 				%td
 					- if user.black_horse and bopdial_started?
 						%img.flag_icon{src: "/flags/#{user.black_horse.name}.png"}

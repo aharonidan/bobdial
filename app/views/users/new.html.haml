@@ -16,6 +16,9 @@
                 = f.email_field :email, class: 'input is-large', placeholder: "Your Email", type: "email", required: true
             .field
               .control
+                = f.text_field :account_name, class: 'input is-large', placeholder: "Your Account", required: true
+            .field
+              .control
                 = f.password_field :password, class: 'input is-large', placeholder: "Your Password", type: "password", required: true
             .field
               .control

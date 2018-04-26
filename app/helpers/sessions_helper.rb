@@ -18,6 +18,11 @@ module SessionsHelper
     end
   end
 
+  def current_account
+    return @current_account if @current_account
+    @current_account = current_user.account
+  end
+
   # Returns true if the user is logged in, false otherwise.
   def logged_in?
     !current_user.nil?
