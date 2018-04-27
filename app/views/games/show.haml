@@ -11,6 +11,7 @@
       %img.flag_icon{src: "/flags/#{@game.team_b.name}.png"}
       = @game.team_b.name.titleize
     %th Points
+    %th
   %tbody
     - for bet in @bets
       %tr
@@ -20,3 +21,7 @@
         %td= bet.score_b
         %td
         %td.text_centered= bet.points
+        %td
+          - if bet.nadir?
+            %i.icon.fa.fa-check.large-font
+
