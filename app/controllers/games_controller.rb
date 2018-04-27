@@ -21,7 +21,7 @@ class GamesController < ApplicationController
     if @game.editable?
       redirect_to '/unauthorized'
     else
-      @bets = Bet.where(game: @game)
+      @bets = current_account.bets(game: @game)
     end
   end
 

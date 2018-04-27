@@ -20,12 +20,30 @@ aside.menu{
   border-right: grey 1px solid;
 }
 
+a.navbar-burger:hover{
+  color: inherit;
+}
+
 .one_digit{
   width: 36px;
+  text-align: center;
+}
+
+.input[disabled]{
+  color: #3273dc;
+  font-weight: bold;
 }
 
 .is-full-width{
   width: 100%;
+}
+
+.large-font{
+  font-size: 20px;
+}
+
+.hidden{
+  visibility: hidden;
 }
 
 

@@ -1,4 +1,4 @@
-%h1.title Table
+%h1.title Standings
 %table.table.is-full-width
 	%thead
 		%th Name
@@ -15,22 +15,26 @@
 			%tr
 				%td= user.name
 				%td= user.points
-				%td= user.bingo if bopdial_started?
-				%td= user.donkey if bopdial_started?
-				%td
-					- if user.black_horse and bopdial_started?
-						%img.flag_icon{src: "/flags/#{user.black_horse.name}.png"}
-						= user.black_horse.name.titleize
+				- if bopdial_started? or user == current_user
+					%td= user.bingo if bopdial_started?
+					%td= user.donkey if bopdial_started?
+					%td
+						- if user.black_horse
+							%img.flag_icon{src: "/flags/#{user.black_horse.name}.png"}
+					%td
+						- if user.grey_horse
+							%img.flag_icon{src: "/flags/#{user.grey_horse.name}.png"}
+					%td
+						- if user.champion
+							%img.flag_icon{src: "/flags/#{user.champion.name}.png"}
+					%td= user.top_scorer.titleize if user.top_scorer
+					%td= user.after_army_trip.titleize if user.after_army_trip
+				- else
+					%td
+					%td
+					%td
+					%td
+					%td
+					%td
+					%td
 
-				%td
-					- if user.grey_horse and bopdial_started?
-						%img.flag_icon{src: "/flags/#{user.grey_horse.name}.png"}
-						= user.grey_horse.name.titleize
-
-				%td
-					- if user.champion and bopdial_started?
-						%img.flag_icon{src: "/flags/#{user.champion.name}.png"}
-						= user.champion.name.titleize
-
-				%td= user.top_scorer.titleize if user.top_scorer and bopdial_started?
-				%td= user.after_army_trip.titleize if user.after_army_trip and bopdial_started?

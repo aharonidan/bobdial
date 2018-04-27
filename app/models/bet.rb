@@ -1,6 +1,7 @@
 class Bet < ApplicationRecord
   belongs_to :game
   belongs_to :user
+  has_one :account, through: :user
 
   validate do |bet|
     if bet.game.not_editable?
@@ -72,7 +73,8 @@ class Bet < ApplicationRecord
     return @bets_and_count if @bets_and_count
 
     result = {}
-    for bet in game.bets
+    bets = user.account.bets(game: game)
+    for bet in bets
       result["#{bet.score_a}-#{bet.score_b}"] ||= 0
       result["#{bet.score_a}-#{bet.score_b}"] += 1
     end

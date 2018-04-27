@@ -10,7 +10,6 @@
   %body
     - if logged_in?
       = render 'layouts/header'
-      / = render 'layouts/menu'
       .container
         = yield
         - debug(params) if Rails.env.development?

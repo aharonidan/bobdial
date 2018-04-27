@@ -65,7 +65,7 @@ class User < ApplicationRecord
   def calculate_points
     sum = 0
     for bet in bets
-      sum += bet.points
+      sum += bet.points if bet.game.played?
     end
 
     sum += black_horse_points
@@ -107,7 +107,7 @@ class User < ApplicationRecord
     sum = 0
 
     for bet in bets
-      sum += 1 if bet.donkey?
+      sum += 1 if bet.game.played? and bet.donkey?
     end
     sum
   end
@@ -116,7 +116,7 @@ class User < ApplicationRecord
     sum = 0
 
     for bet in bets
-      sum += 1 if bet.bingo?
+      sum += 1 if bet.game.played? and bet.bingo?
     end
     sum
   end
