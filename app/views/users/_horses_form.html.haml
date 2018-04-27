@@ -40,7 +40,7 @@
 			%td
 				%label.label{for: :top_scorer} Top Scorer
 			%td
-				%input.input{name: :top_scorer, value: current_user.top_scorer.titleize, required: true}
+				%input.input{name: :top_scorer, value: (current_user.top_scorer.titleize if current_user.top_scorer), required: true}
 
 
 %button.button.is-link.is-full-width{type: :submit} Submit
