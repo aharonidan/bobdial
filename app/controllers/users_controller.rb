@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Deadline has passed, sorry :("
     end
-    redirect_to '/horses'
+    redirect_to '/standings'
   end
 
   private
