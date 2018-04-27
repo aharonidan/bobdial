@@ -27,7 +27,7 @@ $ ->
     form = $(this).closest('form')
     form.submit()
 
-  $('#bets-form').on 'keyup', 'input', ->
+  $(document).on 'keyup', '#bets-form input', ->
     row = $(this).closest('tr')
     if row.find('.score_a').val() != '' && row.find('.score_b').val() != ''
       row.find('#submit-bet').css('visibility', 'visible');
