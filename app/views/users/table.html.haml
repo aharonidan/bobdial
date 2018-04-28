@@ -1,23 +1,28 @@
 %h1.title Standings
 %table.table.is-full-width
 	%thead
-		%th Name
-		%th Points
-		%th Bingo
-		%th Donkey
-		%th Black Horse
-		%th Grey Horse
-		%th Winner
-		%th Top scorer
-		%th After Army
+		%th
+		%th
+		/ %th Bingo
+		/ %th Donkey
+		%th
+			%img.icon{src: '/images/blackhorse.png'}
+		%th
+			%img.icon{src: '/images/greyhorse.png'}
+		%th
+			%img.icon{src: '/images/winner.png'}
+		%th
+			%img.icon{src: '/images/scorer.png'}
+		%th
+			%img.icon{src: '/images/army.png'}
 	%tbody
 		- for user in @users
 			%tr
 				%td= user.name
 				%td= user.points
 				- if bopdial_started? or user == current_user
-					%td= user.bingo if bopdial_started?
-					%td= user.donkey if bopdial_started?
+					/ %td= user.bingo if bopdial_started?
+					/ %td= user.donkey if bopdial_started?
 					%td
 						- if user.black_horse
 							%img.flag_icon{src: "/flags/#{user.black_horse.name}.png"}

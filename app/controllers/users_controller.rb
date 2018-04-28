@@ -22,10 +22,12 @@ class UsersController < ApplicationController
   end
 
   def table
+    @active_nav_tab = :standings
     @users = current_account.users.all.order(points: :desc)
   end
 
   def horses
+    @active_nav_tab = :horses
   end
 
   def update_horses
@@ -38,7 +40,6 @@ class UsersController < ApplicationController
         top_scorer: params[:top_scorer],
         after_army_trip: params[:after_army_trip]
       )
-      flash[:success] = "Submitted Successfully"
     else
       flash[:error] = "Deadline has passed, sorry :("
     end

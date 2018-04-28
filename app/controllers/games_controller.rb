@@ -5,12 +5,14 @@ class GamesController < ApplicationController
   before_action :redirect_to_login, unless: :admin?, only: [:update]
 
   def group_stage
+    @active_nav_tab = :group_stage
     @active_tab  = params[:group]
     @games       = Game.where(group: params[:group])
     @bets        = Bet.where(user: current_user, group: params[:group])
   end
 
   def knockout_stage
+    @active_nav_tab = :knockout_stage
     @active_tab  = params[:phase]
     @games = Game.where(group: params[:phase])
     @bets  = Bet.where(user: current_user, group: params[:phase])

@@ -1,6 +1,6 @@
 %tr
   %input{type: :hidden, name: :game_id, value: game.id}
-  %td.narrow
+  %td
     - unless game.place_holder?
       %img.flag_icon{src: "/flags/#{game.team_a.name}.png"}
     %label= game.team_a.name.titleize
