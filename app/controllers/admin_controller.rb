@@ -3,10 +3,12 @@ class AdminController < ApplicationController
   before_action :redirect_to_login, unless: :admin?
 
   def settings
+    @active_nav_tab = :admin
     @games = Game.all.order(:id)
   end
 
   def horses
+    @active_nav_tab == :admin
   	@settings = Setting.all
   end
 
