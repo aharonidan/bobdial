@@ -7,14 +7,14 @@ class GamesController < ApplicationController
   def group_stage
     @active_nav_tab = :group_stage
     @active_tab  = params[:group]
-    @games       = Game.where(group: params[:group])
+    @games       = Game.where(group: params[:group]).order(:id)
     @bets        = Bet.where(user: current_user, group: params[:group])
   end
 
   def knockout_stage
     @active_nav_tab = :knockout_stage
     @active_tab  = params[:phase]
-    @games = Game.where(group: params[:phase])
+    @games = Game.where(group: params[:phase]).order(:id)
     @bets  = Bet.where(user: current_user, group: params[:phase])
   end
 
