@@ -1,9 +1,8 @@
 $ ->
-  targets = $('[rel~=tooltip]')
   target = false
   tooltip = false
   title = false
-  targets.bind 'mouseenter', ->
+  $(document).on 'mouseenter', '[rel~=tooltip]', ->
     target = $(this)
     tip = target.attr('title')
     tooltip = $('<div id="tooltip"></div>')
