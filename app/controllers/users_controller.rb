@@ -21,9 +21,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def table
+  def standings
     @active_nav_tab = :standings
-    @users = current_account.users.all.order(points: :desc)
+    @active_tab = params[:tab]
+    @users = current_account.users.all
+    @ranking = Ranker.rank(@users, by: :points)
+    render "standings_#{params[:tab]}"
   end
 
   def horses
@@ -43,7 +46,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "Deadline has passed, sorry :("
     end
-    redirect_to '/standings'
+    redirect_to '/standings/horses'
   end
 
   private

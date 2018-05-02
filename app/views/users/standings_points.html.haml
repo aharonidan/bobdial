@@ -1,0 +1,27 @@
+%h1.title Standings
+.s10
+= render 'users/table_tabs'
+.s30
+%table.table.is-full-width
+	%thead
+		%th.text-centered #
+		%th Name
+		%th.text-centered Points
+		%th.text-centered Bingo
+		%th.text-centered Donkey
+	%tbody
+		- for rank in @ranking
+			- for user in rank.rankables
+				%tr
+					%td.text-centered= rank.rank
+					%td= user.name
+					- if bopdial_started?
+						%td.text-centered= user.points
+						%td.text-centered= user.bingo
+						%td.text-centered= user.donkey
+					- else
+						%td
+						%td
+						%td
+
+

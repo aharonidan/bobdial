@@ -1,0 +1,18 @@
+%footer
+  .tabs.is-fullwidth
+    %ul
+      %li
+        %a{href: '/standings/points'}
+          %img.icon.large{src: @active_nav_tab == :standings ? '/images/podium-selected.png' : '/images/podium.png'}
+      %li
+        %a{href: '/games/group_stage/a'}
+          %img.icon.large{src: @active_nav_tab == :group_stage ? '/images/group-stage-selected.png' : '/images/group-stage.png'}
+      %li
+        %a{href: '/games/knockout_stage/round_of_16'}
+          %img.icon.large{src: @active_nav_tab == :knockout_stage ? '/images/knockout-stage-selected.png' : '/images/knockout-stage.png'}
+      %li
+        %a{href: '/horses'}
+          %img.icon.large{src: @active_nav_tab == :horses ? '/images/horses-selected.png' : '/images/horses.png'}
+      %li
+        %a{href: '/rules'}
+          %img.icon.large{src: @active_nav_tab == :rules ? '/images/rules-selected.png' : '/images/rules.png'}

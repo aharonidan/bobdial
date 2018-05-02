@@ -1,33 +1,17 @@
 %nav.navbar.is-dark{"aria-label" => "main navigation", role: "navigation"}
   .navbar-brand
-    %a.navbar-item{href: '#'} BOPDIAL
+    %img.navbar-item.banner{src: '/images/banner.jpg'}
     .navbar-burger#navbar-burger-id{"aria-expanded" => "false", "aria-label" => "menu", "data-target" => "navMenu", role: "button"}
       %span{"aria-hidden" => "true"}
       %span{"aria-hidden" => "true"}
       %span{"aria-hidden" => "true"}
   #navbar-menu-id.navbar-menu
     .navbar-start
-      %a.navbar-item{href: '/rules'} Rules
+      - if admin?
+        %a.navbar-item{href: '/admin/settings'} Admin Panel
     .navbar-end
       %a.navbar-item.is-hidden-touch{href: "#where-section"}
         %i.far.fa-clock.fa-lg
 
     .navbar-end
-      %p.navbar-item.right_padded= "Logged as #{current_user.name}"
       = link_to "Log out", '/logout', method: :delete, id: :logout_button, class: 'navbar-item'
-.s10
-.tabs.is-boxed
-  %ul
-    / %li{ class: @active_nav_tab == :rules ? 'is-active' : '' }
-    /   %a{href: '/rules'} Rules
-    %li{ class: @active_nav_tab == :standings ? 'is-active' : '' }
-      %a{href: '/standings'} Standings
-    %li{ class: @active_nav_tab == :horses ? 'is-active' : '' }
-      %a{href: '/horses'} Horses
-    %li{ class: @active_nav_tab == :group_stage ? 'is-active' : '' }
-      %a{href: '/games/group_stage/a'} Group Stage
-    %li{ class: @active_nav_tab == :knockout_stage ? 'is-active' : '' }
-      %a{href: '/games/knockout_stage/round_of_16'} Knockout Stage
-    - if admin?
-      %li{ class: @active_nav_tab == :admin ? 'is-active' : '' }
-        %a{href: '/admin/settings'} Admin Panel

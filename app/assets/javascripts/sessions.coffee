@@ -17,15 +17,14 @@ $ ->
       $('#navbar-burger-id').addClass 'is-active'
       $('#navbar-menu-id').addClass 'is-active'
 
-  $(document).on 'click', '#edit-bet', ->
-    row = $(this).closest('tr')
+  $(document).on 'click', '.edit-bet', ->
+    row = $(this).closest('tr').next('tr')
     row.find('input').attr('disabled', false)
-    $(this).hide()
-    row.find('#submit-bet').css('visibility', 'visible');
+    $(this).find('a').hide()
 
-  $(document).on 'click', '#submit-bet', ->
-    form = $(this).closest('form')
-    form.submit()
+  $(document).on 'click', '.clickable', ->
+    if $(this).data('href')
+      window.location = $(this).data('href')
 
   $(document).on 'keyup', '#bets-form input', ->
     row = $(this).closest('tr')
@@ -33,6 +32,5 @@ $ ->
       row.find('#submit-bet').css('visibility', 'visible');
     else
       row.find('#submit-bet').css('visibility', 'hidden');
-
 
   $('.notification').delay(2000).fadeOut()

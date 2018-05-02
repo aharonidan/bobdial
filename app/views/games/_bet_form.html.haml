@@ -1,25 +1,27 @@
+%tr.no-border
+  %td.no-padding-bottom{'colspan' => 4}
+    %p= game.match_time.strftime('%d/%m %H:%M') if game.match_time
+  - if game.not_editable?
+    %td.next-arrow.clickable.action-button{'rowspan' => 2, 'data-href' => "/games/#{game.id}" }
+      %a.fa.fa-chevron-right
+  - elsif bet
+    %td.edit-bet.clickable.action-button{'rowspan' => 2}
+      %a.fa.fa-pencil
+  - else
+    %td.action-button{'rowspan' => 2}
+
 %tr
   %input{type: :hidden, name: :game_id, value: game.id}
-  %td
+  %td.left-bet-td
     - unless game.place_holder?
       %img.flag_icon{src: "/flags/#{game.team_a.name}.png"}
     %label= game.team_a.name.titleize
-  %td
+  %td.no-padding
     %input.input.one_digit.score_a{name: "bets[#{game.id}][score_a]", size: 1, maxlength: 1, value: bet ? bet.score_a : '', disabled: (game.not_editable? or bet.present?), type: :tel}
-  %td
+  %td.no-padding
     %input.input.one_digit.score_b{name: "bets[#{game.id}][score_b]", size: 1, maxlength: 1, value: bet ? bet.score_b : '', disabled: (game.not_editable? or bet.present?), type: :tel}
   %td
     - unless game.place_holder?
       %img.flag_icon{src: "/flags/#{game.team_b.name}.png"}
     %label= game.team_b.name.titleize
-  %td
-    - if game.not_editable?
-      %a.icon.fa.fa-info-circle.large-font{href: "/games/#{game.id}" }
-    - elsif bet
-      %a.icon.fa.fa-edit.large-font#edit-bet
-    %a.icon.fa.fa-check.large-font#submit-bet.hidden
-  %td
-    %p= game.match_time.strftime('%A, %B %d, %H:%M') if game.match_time
-  %td
-    %p= game.stadium
 

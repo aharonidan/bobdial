@@ -40,6 +40,10 @@ module SessionsHelper
     "#{continent.titleize} - #{Team.after_army_teams(continent)}"
   end
 
+  def after_army_short(continent)
+    continent.split('_').last.titleize
+  end
+
   # Logs out the current user.
   def log_out
     forget(current_user)

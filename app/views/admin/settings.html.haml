@@ -6,9 +6,9 @@
 
 %form{method: :post, action: '/games/update'}
   = hidden_field_tag :authenticity_token, form_authenticity_token
-  %table.table.is-full-width
+  %table.table.is-full-width.display-block
     %tbody.tbody
       - for game in @games
         = render partial: 'games/form', locals: {game: game}
-
-  %button.button.is-link.is-full-width{type: :submit} Submit
+  .s100
+  %button.button.is-link.is-full-width.submit-button{type: :submit} Submit

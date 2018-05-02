@@ -1,4 +1,4 @@
-%table.table
+%table.table.is-fullwidth
 	%tbody
 		%tr
 			%td
@@ -18,16 +18,19 @@
 						%option{value: ''} Select
 						- for grey_horse in Team.grey_horses
 							%option{value: grey_horse.id, selected: current_user.grey_horse == grey_horse}= grey_horse.name.titleize
-		%tr
+		%tr.no-border-bottom
 			%td
-				%label.label{for: :after_army_trip} After the army trip
+				%label.label{for: :after_army_trip} After the Army Trip
 			%td
 				.select
 					%select{name: :after_army_trip, required: true}
 						%option{value: ''} Select
 						- for after_army_trip in Team.after_army_trips
-							%option{value: after_army_trip, selected: after_army_trip == current_user.after_army_trip }= after_army_options(after_army_trip)
-		%tr
+							%option{value: after_army_trip, selected: after_army_trip == current_user.after_army_trip }= after_army_trip.titleize
+		- for after_army_trip in Team.after_army_trips
+			%tr.no-border.padding-bottom
+				%td.is-size-7-touch{'colspan' => 2}=after_army_options(after_army_trip)
+		%tr.border-top
 			%td
 				%label.label{for: :champion_id} Winner
 			%td
@@ -43,4 +46,4 @@
 				%input.input{name: :top_scorer, value: (current_user.top_scorer.titleize if current_user.top_scorer), required: true}
 
 
-%button.button.is-link.left-margin.is-full-width{type: :submit} Submit
+%button.button.is-link.is-full-width.submit-button{type: :submit} Submit

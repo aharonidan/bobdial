@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'games/:id', to: 'games#show'
 
-  get 'standings', to: 'users#table'
+  get 'standings/:tab', to: 'users#standings'
 
   get 'rules', to: 'static_pages#rules'
   get 'unauthorized', to: 'static_pages#unauthorized'

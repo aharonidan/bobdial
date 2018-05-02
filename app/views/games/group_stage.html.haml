@@ -2,9 +2,10 @@
 = render 'games/group_stage_tabs'
 - if @games.any?
   %form#bets-form{method: :post, action: '/bets'}
-    %table.table
+    %table.table.is-full-width
       %tbody.tbody
         = hidden_field_tag :authenticity_token, form_authenticity_token
         - for game in @games
           = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
-    %button.button.is-link.left-margin.is-full-width{type: :submit} Submit
+    .s100
+    %button.button.is-link.is-full-width.submit-button{type: :submit} Submit

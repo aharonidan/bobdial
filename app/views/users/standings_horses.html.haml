@@ -1,0 +1,44 @@
+%h1.title Standings
+.s10
+= render 'users/table_tabs'
+.s30
+
+%table.table.is-full-width.display-block
+	%thead
+		%th.align-bottom #
+		%th.align-bottom Name
+		%th
+			%img.icon.is-medium.image-center{src: '/images/blackhorse.png'}
+		%th
+			%img.icon.is-medium.image-center{src: '/images/greyhorse.png'}
+		%th
+			%img.icon.is-medium.image-center{src: '/images/winner.png'}
+		%th
+			%img.icon.is-medium.image-center{src: '/images/scorer.png'}
+		%th
+			%img.icon.is-medium.image-center{src: '/images/army.png'}
+	%tbody
+		- for rank in @ranking
+			- for user in rank.rankables
+				%tr
+					%td= rank.rank
+					%td= user.name
+					- if bopdial_started? or user == current_user
+						%td
+							- if user.black_horse
+								%img.flag_icon{src: "/flags/#{user.black_horse.name}.png"}
+						%td
+							- if user.grey_horse
+								%img.flag_icon{src: "/flags/#{user.grey_horse.name}.png"}
+						%td
+							- if user.champion
+								%img.flag_icon{src: "/flags/#{user.champion.name}.png"}
+						%td= user.top_scorer.titleize if user.top_scorer
+						%td= after_army_short(user.after_army_trip) if user.after_army_trip
+					- else
+						%td
+						%td
+						%td
+						%td
+						%td
+
