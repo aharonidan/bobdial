@@ -11,8 +11,8 @@
     .column.align-right
       %img.flag_icon{src: "/flags/#{@game.team_a.name}.png"}
       = @game.team_a.name.titleize
-    .column.is-1.boxed= @game.score_a
-    .column.is-1.boxed= @game.score_b
+    .column.is-1.boxed.text-centered= @game.score_a
+    .column.is-1.boxed.text-centered= @game.score_b
     .column
       %img.flag_icon{src: "/flags/#{@game.team_b.name}.png"}
       = @game.team_b.name.titleize
