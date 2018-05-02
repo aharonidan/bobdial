@@ -26,6 +26,11 @@ $ ->
     if $(this).data('href')
       window.location = $(this).data('href')
 
+    if $(this).data('edit')
+      console.log($(this))
+      $(this).find('input').attr('disabled', false)
+      $(this).prev().find('a').hide()
+
   $(document).on 'keyup', '#bets-form input', ->
     row = $(this).closest('tr')
     if row.find('.score_a').val() != '' && row.find('.score_b').val() != ''

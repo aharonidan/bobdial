@@ -193,7 +193,7 @@ table.table.is-fullwidth select{
 table tr td.action-button{
   vertical-align: middle;
   text-align: center;
-  border: 1px solid #dbdbdb;
+  border-bottom: 1px solid #dbdbdb;
   width: 30px;
   a {
     display: block;
@@ -211,6 +211,10 @@ table.table {
   overflow-x: auto;
   overflow-y: auto;
   word-wrap: inherit;
+  &.word-wrap td{
+    white-space: nowrap;
+  }
+
 }
 
 .display-block{
