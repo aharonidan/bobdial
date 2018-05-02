@@ -22,6 +22,7 @@ class Bet < ApplicationRecord
   end
 
   def bingo?
+    return false unless game.played?
     score_a == game.score_a and score_b == game.score_b
   end
 
@@ -62,6 +63,7 @@ class Bet < ApplicationRecord
   end
 
   def donkey?
+    return false unless game.played?
     not bingo? and not kivoon? and score_a == game.score_b and score_b == game.score_a
   end
 
