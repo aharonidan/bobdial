@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       log_in user
       remember user
-      redirect_to '/standings'
+      redirect_to '/standings/points'
       flash.discard
     else
       flash.now[:error] = 'Invalid email/password combination'
