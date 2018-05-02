@@ -20,6 +20,7 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @active_nav_tab = @game.is_playoff ? :knockout_stage : :group_stage
     if @game.editable?
       redirect_to '/unauthorized'
     else
