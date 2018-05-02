@@ -1,28 +1,47 @@
-.s20
-%table.table.is-hoverable
-  %thead
-    %th.centered.clickable{'data-href' => games_page(@game)}
+.columns.no-padding-bottom.is-mobile
+  .column.is-2.text-centered
+    .clickable.padded{'data-href' => games_page(@game)}
       %a.fa.fa-chevron-left
-    %th
+  .column
+.section.padded
+  .columns.is-mobile
+    .column.is-4=@game.match_time.strftime('%d/%m %H:%M')
+    .column.align-right= @game.stadium
+  .columns.game-score.is-mobile
+    .column.align-right
       %img.flag_icon{src: "/flags/#{@game.team_a.name}.png"}
       = @game.team_a.name.titleize
-    %th= @game.score_a
-    %th= @game.score_b
-    %th
+    .column.is-1.boxed= @game.score_a
+    .column.is-1.boxed= @game.score_b
+    .column
       %img.flag_icon{src: "/flags/#{@game.team_b.name}.png"}
       = @game.team_b.name.titleize
-    %th.align-bottom Points
-    %th
+%h1.title Bets
+%table.table.is-hoverable.is-fullwidth.word-wrap
+  %thead
+    %tr
+      %th.align-right{colspan: 2}= @game.team_a.name.titleize
+      %th.align-left{colspan: 2}= @game.team_b.name.titleize
+      %th Pts
+      %th
+      %th
   %tbody
     - for bet in @bets
       %tr
         %td= bet.user.name
-        %td
-        %td= bet.score_a
+        %td.align-right= bet.score_a
         %td= bet.score_b
         %td
         %td.text-centered= bet.points
         %td
-          - if bet.nadir?
-            %i.icon.fa.fa-star.large-font.dark-red
+          - if bet.nadir? and bet.bingo?
+            %i.icon.fa.fa-star.large-font.green{title: 'Rare Bet and Bingo', rel: 'tooltip'}
+          -elsif bet.nadir?
+            %i.icon.fa.fa-star.large-font.dark-red{title: 'Rare Bet', rel: 'tooltip'}
+        %td
+          - if bet.donkey?
+            %img.icon.fa{src: '/images/donkey.png', title: 'Donkey', rel: 'tooltip'}
+          - elsif bet.bingo?
+            %img.icon.fa{src: '/images/bingo.png', title: 'Bingo', rel: 'tooltip'}
+
 
