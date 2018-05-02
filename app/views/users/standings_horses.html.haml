@@ -6,15 +6,15 @@
 	%thead
 		%th.align-bottom #
 		%th.align-bottom Name
-		%th
+		%th{title: 'Black Horse', rel: 'tooltip'}
 			%img.icon.is-medium.image-center{src: '/images/blackhorse.png'}
-		%th
+		%th{title: 'Grey Horse', rel: 'tooltip'}
 			%img.icon.is-medium.image-center{src: '/images/greyhorse.png'}
-		%th
+		%th{title: 'Winner', rel: 'tooltip'}
 			%img.icon.is-medium.image-center{src: '/images/winner.png'}
-		%th
+		%th{title: 'Top Scorer', rel: 'tooltip'}
 			%img.icon.is-medium.image-center{src: '/images/scorer.png'}
-		%th
+		%th{title: 'After the Army Trip', rel: 'tooltip'}
 			%img.icon.is-medium.image-center{src: '/images/army.png'}
 	%tbody
 		- for rank in @ranking
@@ -23,13 +23,13 @@
 					%td= rank.rank
 					%td= user.name
 					- if bopdial_started? or user == current_user
-						%td
+						%td{title: user.black_horse ? "#{user.black_horse.name.titleize}" : '', rel: 'tooltip'}
 							- if user.black_horse
 								%img.flag_icon{src: "/flags/#{user.black_horse.name}.png"}
-						%td
+						%td{title: user.grey_horse ? "#{user.grey_horse.name.titleize}" : '', rel: 'tooltip'}
 							- if user.grey_horse
 								%img.flag_icon{src: "/flags/#{user.grey_horse.name}.png"}
-						%td
+						%td{title: user.champion ? "#{user.champion.name.titleize}" : '', rel: 'tooltip'}
 							- if user.champion
 								%img.flag_icon{src: "/flags/#{user.champion.name}.png"}
 						%td= user.top_scorer.titleize if user.top_scorer
