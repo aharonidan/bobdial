@@ -1,28 +1,24 @@
 %section.hero.is-success.is-fullheight
-  .hero-body
+  .hero-body.no-padding-top
     .container.has-text-centered
-      .column.is-4.is-offset-4
+      .column
         %h3.title.has-text-grey Sign Up
         = render '/messages'
         .box
           %figure.avatar
-            %img{src: "https://placehold.it/128x128"}
+            %img{src: '/images/128.jpg'}
           = form_for(@user) do |f|
+            = f.hidden_field(:account_name, value: @user.account.name)
             .field
               .control
-                = f.text_field :name, class: 'input is-large', autofocus: "", placeholder: "Your Name", required: true
+                = f.text_field :name, class: 'input is-large', autofocus: "", placeholder: "Name", required: true
             .field
               .control
-                = f.email_field :email, class: 'input is-large', placeholder: "Your Email", type: "email", required: true
+                = f.email_field :email, class: 'input is-large', placeholder: "Email", type: "email", required: true
             .field
               .control
-                = f.text_field :account_name, class: 'input is-large', placeholder: "Your Account", required: true
-            .field
-              .control
-                = f.password_field :password, class: 'input is-large', placeholder: "Your Password", type: "password", required: true
+                = f.password_field :password, class: 'input is-large', placeholder: "Password", type: "password", required: true
             .field
               .control
                 = f.password_field :password_confirmation, class: 'input is-large', placeholder: "Password Confirmation", type: "password", required: true
-            = f.submit "Sign Up", class: "button is-block is-info is-large is-fullwidth"
-        %p.has-text-grey
-          %a{href: login_path} Login
+            = f.submit "Sign Up", class: "button is-block is-primary is-large is-fullwidth"

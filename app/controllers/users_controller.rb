@@ -1,23 +1,31 @@
 class UsersController < ApplicationController
 
-  before_action :redirect_to_login, unless: :logged_in?, only: [:show, :table]
+  before_action :redirect_to_login, unless: :logged_in?, only: [:standings, :horses]
 
   def new
-  	@user = User.new
+    @active_nav_tab = :signup
+
+    account = Account.where(name: params[:account_name].downcase).take
+    if account
+      @user = User.new(account: account)
+    else
+      flash[:error] = "Account does not exist"
+      flash.discard
+      render 'set_account'
+    end
   end
 
-  def show
-    @user = User.find(params[:id])
+  def set_account
+    @active_nav_tab = :signup
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
-      flash.discard
       redirect_to login_path
     else
       flash[:error] = @user.errors.full_messages
-      render 'new'
+      redirect_to "/users/new?account_name=#{@user.account.name}"
     end
   end
 

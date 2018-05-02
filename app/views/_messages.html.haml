@@ -1,7 +1,7 @@
 - flash.each do |name, msg|
   - if msg.is_a? Array
-    .notification{class: message_class(name)}
+    .notification.is-primary
       - for message in msg
         %p= message
   - else
-    .notification{class: message_class(name)}= msg
+    .notification.is-primary= msg

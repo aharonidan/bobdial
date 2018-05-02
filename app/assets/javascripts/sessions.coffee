@@ -38,4 +38,4 @@ $ ->
     else
       row.find('#submit-bet').css('visibility', 'hidden');
 
-  $('.notification').delay(2000).fadeOut()
+  $('.notification').delay(3000).fadeOut()

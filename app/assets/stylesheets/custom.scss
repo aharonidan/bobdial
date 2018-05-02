@@ -22,14 +22,16 @@ body{
 }
 
 nav.navbar.is-dark{
-  // background-color: $dark-red;
   background-image: url("/images/navbar-background.png");
-  // background-repeat: repeat-y;
   background-size: 200px;
 }
 
 .dark-red{
   color: $dark-red;
+}
+
+.hero-body.no-padding-top{
+  padding-top: 0;
 }
 
 footer {

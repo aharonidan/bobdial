@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
 
   def new
+    @active_nav_tab = :login
   end
 
   def create

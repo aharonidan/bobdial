@@ -78,6 +78,10 @@ class User < ApplicationRecord
 
   end
 
+  def points
+    super || 0
+  end
+
   def black_horse_points
     return 8 if black_horse and Setting.where(name: 'black_horse', value: black_horse.name).any?
     return 0

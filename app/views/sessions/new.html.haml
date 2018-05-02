@@ -1,9 +1,8 @@
 %section.hero.is-success.is-fullheight
   .hero-body
     .container.has-text-centered
-      .column.is-4.is-offset-4
+      .column
         %h3.title.has-text-grey Login
-        %p.subtitle.has-text-grey Please login to proceed.
         = render '/messages'
         .box
           %figure.avatar
@@ -11,10 +10,8 @@
           = form_for(:session, url: login_path) do |f|
             .field
               .control
-                = f.email_field :email, class: 'input is-large', autofocus: "", placeholder: "Your Email", type: "email", required: true
+                = f.email_field :email, class: 'input is-large', autofocus: "", placeholder: "Email", type: "email", required: true
             .field
               .control
-                = f.password_field :password, class: 'input is-large', placeholder: "Your Password", type: "password", required: true
-            = f.submit "Login", class: "button is-block is-info is-large is-fullwidth"
-        %p.has-text-grey
-          %a{href: signup_path} Sign Up
+                = f.password_field :password, class: 'input is-large', placeholder: "Password", type: "password", required: true
+            = f.submit "Login", class: "button is-block is-primary is-large is-fullwidth"

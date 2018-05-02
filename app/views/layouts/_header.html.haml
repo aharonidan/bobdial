@@ -14,4 +14,4 @@
         %i.far.fa-clock.fa-lg
 
     .navbar-end
-      = link_to "Log out", '/logout', method: :delete, id: :logout_button, class: 'navbar-item'
+      = link_to "Log out", '/logout', method: :delete, id: :logout_button, class: 'navbar-item' if logged_in?
