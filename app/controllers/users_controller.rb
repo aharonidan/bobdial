@@ -23,10 +23,10 @@ class UsersController < ApplicationController
 
   def standings
     @active_nav_tab = :standings
-    @active_tab = params[:tab]
+    @active_tab = params[:tab] || :points
     @users = current_account.users.all
     @ranking = Ranker.rank(@users, by: :points)
-    render "standings_#{params[:tab]}"
+    render "standings_#{@active_tab}"
   end
 
   def horses
