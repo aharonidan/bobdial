@@ -68,4 +68,13 @@ module SessionsHelper
     return @started if @started
     @started = Game.first.not_editable?
   end
+
+  def games_page game
+    if game.is_playoff
+      "knockout_stage/#{game.group}"
+    else
+      "group_stage/#{game.group}"
+    end
+  end
+
 end

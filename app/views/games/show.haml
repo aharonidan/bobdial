@@ -1,7 +1,8 @@
 .s20
 %table.table.is-hoverable
   %thead
-    %th
+    %th.centered.clickable{'data-href' => games_page(@game)}
+      %a.fa.fa-chevron-left
     %th
       %img.flag_icon{src: "/flags/#{@game.team_a.name}.png"}
       = @game.team_a.name.titleize
@@ -10,7 +11,7 @@
     %th
       %img.flag_icon{src: "/flags/#{@game.team_b.name}.png"}
       = @game.team_b.name.titleize
-    %th Points
+    %th.align-bottom Points
     %th
   %tbody
     - for bet in @bets

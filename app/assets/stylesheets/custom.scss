@@ -150,6 +150,11 @@ button.button.submit-button{
   text-align: center !important;
 }
 
+table.table th.centered{
+  vertical-align: middle;
+  text-align: center;
+}
+
 table.table th.align-bottom{
   vertical-align: bottom;
 }
@@ -222,7 +227,7 @@ table.table {
 }
 
 .align-right{
-  text-align: right;
+  text-align: right !important;
 }
 
 .float-right {
