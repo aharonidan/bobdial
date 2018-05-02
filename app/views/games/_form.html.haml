@@ -1,6 +1,6 @@
 %tr
   %input{type: :hidden, name: :game_id, value: game.id}
-  %td.narrow
+  %td.no-padding
     - if game.team_a.group != 'place_holder'
       %img.flag_icon{src: "/flags/#{game.team_a.name}.png"}
       %label= game.team_a.name.titleize
@@ -9,11 +9,11 @@
         %select{name: "games[#{game.id}][team_a_id]"}
           - for team in Team.all
             %option{value: team.id, selected: game.team_a_id == team.id}= team.name.titleize
-  %td
+  %td.no-padding
     %input.input.one_digit{name: "games[#{game.id}][score_a]", size: 1, maxlength: 1, value: game.score_a }
-  %td
+  %td.no-padding
     %input.input.one_digit{name: "games[#{game.id}][score_b]", size: 1, maxlength: 1, value: game.score_b}
-  %td
+  %td.no-padding
     - if game.team_b.group != 'place_holder'
       %img.flag_icon{src: "/flags/#{game.team_b.name}.png"}
       %label= game.team_b.name.titleize
@@ -22,8 +22,6 @@
         %select{name: "games[#{game.id}][team_b_id]"}
           - for team in Team.all
             %option{value: team.id, selected: game.team_b_id == team.id}= team.name.titleize
-  %td
+  %td.no-padding
     %i.icon.fa.fa-lock
     %input{name: "games[#{game.id}][not_editable]", type: :checkbox, checked: game.not_editable?}
-  %td
-    %p= game.match_time.strftime('%A, %B %d, %H:%M') if game.match_time
