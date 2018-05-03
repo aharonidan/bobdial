@@ -68,6 +68,7 @@ class Bet < ApplicationRecord
   end
 
   def nadir?
+    return false if nadir_functionality_disabled_for_account
     minimum_bets_count <= 3 and minimum_bets_count == my_bet_count
   end
 
@@ -90,6 +91,10 @@ class Bet < ApplicationRecord
 
   def my_bet_count
     bets_and_count["#{score_a}-#{score_b}"]
+  end
+
+  def nadir_functionality_disabled_for_account
+    not user.account.nadir_enabled
   end
 
   def playoff?
