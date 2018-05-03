@@ -74,7 +74,6 @@ deadlines = {
   'Finals' => Time.parse('13/07/2018 17:00'),
 }
 
-
 CSV.foreach('db/worldcup.csv', headers: true) do |row|
   team_a = Team.where(name: row['Home Team'].parameterize(separator: '_')).take
   team_b = Team.where(name: row['Away Team'].parameterize(separator: '_')).take

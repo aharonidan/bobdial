@@ -5,7 +5,8 @@ class Game < ApplicationRecord
   after_update { User.calculate_points }
 
   def not_editable?
-    Time.now > deadline || self.not_editable
+    # adjusting to Israel time
+    (Time.now + 3.hours) > deadline || self.not_editable
   end
 
   def bets
