@@ -57,6 +57,8 @@ $ ->
 
     target.bind 'mouseleave', remove_tooltip
     tooltip.bind 'click', remove_tooltip
+    $('document').on 'mouseleave', '#tooltip', remove_tooltip
+    $('document').on 'click', '#tooltip', remove_tooltip
     return
   return
 
