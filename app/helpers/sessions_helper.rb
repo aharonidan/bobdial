@@ -44,6 +44,11 @@ module SessionsHelper
     continent.split('_').last.titleize
   end
 
+  def got_horse_right? title, user
+    return true if not Game.send("#{title}_announced?")
+    user.send("#{title}_points") > 0
+  end
+
   # Logs out the current user.
   def log_out
     forget(current_user)

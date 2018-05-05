@@ -21,15 +21,22 @@
 					- if bopdial_started? or user == current_user
 						%td{title: user.black_horse ? "#{user.black_horse.name.titleize}" : '', rel: 'tooltip'}
 							- if user.black_horse
-								%img.flag_icon{src: "/flags/#{user.black_horse.name}.png"}
+								%div{class: got_horse_right?(:black_horse, user) ? '' : 'crossed'}
+									%img.flag_icon{src: "/flags/#{user.black_horse.name}.png"}
 						%td{title: user.grey_horse ? "#{user.grey_horse.name.titleize}" : '', rel: 'tooltip'}
 							- if user.grey_horse
-								%img.flag_icon{src: "/flags/#{user.grey_horse.name}.png"}
+								%div{class: got_horse_right?(:grey_horse, user) ? '' : 'crossed'}
+									%img.flag_icon{src: "/flags/#{user.grey_horse.name}.png"}
 						%td{title: user.champion ? "#{user.champion.name.titleize}" : '', rel: 'tooltip'}
 							- if user.champion
-								%img.flag_icon{src: "/flags/#{user.champion.name}.png"}
-						%td= user.top_scorer.titleize if user.top_scorer
-						%td= after_army_short(user.after_army_trip) if user.after_army_trip
+								%div{class: got_horse_right?(:champion, user) ? '' : 'crossed'}
+									%img.flag_icon{src: "/flags/#{user.champion.name}.png"}
+						%td
+							%div{class: got_horse_right?(:top_scorer, user) ? '' : 'crossed'}
+								= user.top_scorer.titleize if user.top_scorer
+						%td
+							%div{class: got_horse_right?(:after_army_trip, user) ? '' : 'crossed'}
+								= after_army_short(user.after_army_trip) if user.after_army_trip
 					- else
 						%td
 						%td

@@ -342,6 +342,33 @@ h1.title:not(:last-child){
   }
 }
 
+tr td.strikeout:before {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  border-bottom: 1px solid #363636;
+  width: 70%;
+}
+
+tr td.strikeout:after {
+  content: "\00B7";
+  font-size: 1px;
+}
+
+tr td.strikeout img{
+  opacity: 0.2;
+}
+
+table td .crossed
+{
+   background-image: linear-gradient(to bottom right,  transparent calc(50% - 1px), #363636, transparent calc(50% + 1px));
+   color: darkgrey;
+   img {
+    opacity: 0.3;
+   }
+}
+
 #tooltip {
   text-align: center;
   color: #fff;

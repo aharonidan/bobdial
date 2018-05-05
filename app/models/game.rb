@@ -29,6 +29,26 @@ class Game < ApplicationRecord
     first.not_editable?
   end
 
+  def self.black_horse_announced?
+    Setting.where(name: 'black_horse').any?
+  end
+
+  def self.grey_horse_announced?
+    Setting.where(name: 'grey_horse').any?
+  end
+
+  def self.top_scorer_announced?
+    Setting.where(name: 'top_scorer').any?
+  end
+
+  def self.champion_announced?
+    Setting.where(name: 'champion').any?
+  end
+
+  def self.after_army_trip_announced?
+    Setting.where(name: 'after_army_trip').any?
+  end
+
   def played?
     score_a.present? and score_b.present?
   end
