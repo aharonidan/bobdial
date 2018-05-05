@@ -8,14 +8,14 @@
     .column.is-4=@game.match_time.strftime('%d/%m %H:%M')
     .column.align-right= @game.stadium
   .columns.game-score.is-mobile
-    .column.align-right
-      %img.flag_icon{src: "/flags/#{@game.team_a.name}.png"}
+    .column
+      %img.flag_icon.float-left{src: "/flags/#{@game.team_a.name}.png"}
       = @game.team_a.name.titleize
     .column.is-1.boxed.text-centered= @game.score_a
     .column.is-1.boxed.text-centered= @game.score_b
-    .column
-      %img.flag_icon{src: "/flags/#{@game.team_b.name}.png"}
+    .column.align-right
       = @game.team_b.name.titleize
+      %img.flag_icon{src: "/flags/#{@game.team_b.name}.png"}
 %h1.title Bets
 %table.table.is-hoverable.is-fullwidth.word-wrap
   %thead
