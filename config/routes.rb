@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   post 'reports', to: 'reports#create'
 
 
-  get  'horses', to: 'users#horses'
+  get  'special_bets/my', to: 'users#my_bets'
+  get  'special_bets/all', to: 'users#all_bets'
   post 'horses', to: 'users#update_horses'
 
   post 'games/update', to: 'games#update'

@@ -1,17 +1,21 @@
 %h1.title Standings
 = render 'users/table_tabs'
 .s20
-%h2.subtitle.padded Daily Reports
-%table.table.is-fullwidth
-	%thead
-		%th Date
-		%th Author
-	%tbody
-		- for report in @reports
-			%tr.clickable{'data-href' => "/reports/#{report.id}"}
-				%td
-					%a= report.report_date.strftime('%d/%m')
-				%td
-					%a= report.user.name
+
+- if @reports.any?
+	%h2.subtitle.padded Daily Reports
+	%table.table.is-fullwidth
+		%thead
+			%th Date
+			%th Author
+		%tbody
+			- for report in @reports
+				%tr.clickable{'data-href' => "/reports/#{report.id}"}
+					%td
+						%a= report.report_date.strftime('%d/%m')
+					%td
+						%a= report.user.name
+- else
+	%p.left-margin No reports yet :(
 
 

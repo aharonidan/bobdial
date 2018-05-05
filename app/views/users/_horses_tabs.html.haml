@@ -1,0 +1,8 @@
+.tabs
+  %ul
+    %li{ class: @active_tab == :my_bets ? 'is-active' : '' }
+      %a{href: '/special_bets/my'} My Bets
+    %li{ class: @active_tab == :all_bets ? 'is-active' : '' }
+      %a{href: '/special_bets/all'} All Bets
+
+

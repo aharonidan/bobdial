@@ -1,49 +1,51 @@
-%table.table.is-fullwidth
-	%tbody
-		%tr
-			%td
-				%label.label{for: :black_horse} Black Horse
-			%td
-				.select
-					%select{name: :black_horse_id, required: true}
-						%option{value: ''} Select
-						- for black_horse in Team.black_horses
-							%option{value: black_horse.id, selected: current_user.black_horse == black_horse}= black_horse.name.titleize
-		%tr
-			%td
-				%label.label{for: :grey_horse} Grey Horse
-			%td
-				.select
-					%select{name: :grey_horse_id, required: true}
-						%option{value: ''} Select
-						- for grey_horse in Team.grey_horses
-							%option{value: grey_horse.id, selected: current_user.grey_horse == grey_horse}= grey_horse.name.titleize
-		%tr.no-border-bottom
-			%td
-				%label.label{for: :after_army_trip} After the Army Trip
-			%td
-				.select
-					%select{name: :after_army_trip, required: true}
-						%option{value: ''} Select
-						- for after_army_trip in Team.after_army_trips
-							%option{value: after_army_trip, selected: after_army_trip == current_user.after_army_trip }= after_army_trip.titleize
-		- for after_army_trip in Team.after_army_trips
-			%tr.no-border.padding-bottom
-				%td.is-size-7-touch{'colspan' => 2}=after_army_options(after_army_trip)
-		%tr.border-top
-			%td
-				%label.label{for: :champion_id} Winner
-			%td
-				.select
-					%select{name: :champion_id, required: true}
-						%option{value: ''} Select
-						- for champion in Team.all_teams
-							%option{value: champion.id, selected: current_user.champion == champion}= champion.name.titleize
-		%tr
-			%td
-				%label.label{for: :top_scorer} Top Scorer
-			%td
-				%input.input{name: :top_scorer, value: (current_user.top_scorer.titleize if current_user.top_scorer), required: true}
+%form{method: :post, action: '/horses'}
+  = hidden_field_tag :authenticity_token, form_authenticity_token
+  %table.table.is-fullwidth
+    %tbody
+      %tr
+        %td
+          %label.label{for: :black_horse} Black Horse
+        %td
+          .select
+            %select{name: :black_horse_id, required: true}
+              %option{value: ''} Select
+              - for black_horse in Team.black_horses
+                %option{value: black_horse.id, selected: current_user.black_horse == black_horse}= black_horse.name.titleize
+      %tr
+        %td
+          %label.label{for: :grey_horse} Grey Horse
+        %td
+          .select
+            %select{name: :grey_horse_id, required: true}
+              %option{value: ''} Select
+              - for grey_horse in Team.grey_horses
+                %option{value: grey_horse.id, selected: current_user.grey_horse == grey_horse}= grey_horse.name.titleize
+      %tr.no-border-bottom
+        %td
+          %label.label{for: :after_army_trip} After the Army Trip
+        %td
+          .select
+            %select{name: :after_army_trip, required: true}
+              %option{value: ''} Select
+              - for after_army_trip in Team.after_army_trips
+                %option{value: after_army_trip, selected: after_army_trip == current_user.after_army_trip }= after_army_trip.titleize
+      - for after_army_trip in Team.after_army_trips
+        %tr.no-border.padding-bottom
+          %td.is-size-7-touch{'colspan' => 2}=after_army_options(after_army_trip)
+      %tr.border-top
+        %td
+          %label.label{for: :champion_id} Winner
+        %td
+          .select
+            %select{name: :champion_id, required: true}
+              %option{value: ''} Select
+              - for champion in Team.all_teams
+                %option{value: champion.id, selected: current_user.champion == champion}= champion.name.titleize
+      %tr
+        %td
+          %label.label{for: :top_scorer} Top Scorer
+        %td
+          %input.input{name: :top_scorer, value: (current_user.top_scorer.titleize if current_user.top_scorer), required: true}
 
 
-%button.button.is-link.is-full-width.submit-button{type: :submit} Submit
+  %button.button.is-link.is-full-width.submit-button{type: :submit} Submit

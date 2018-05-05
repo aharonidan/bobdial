@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :redirect_to_login, unless: :logged_in?, only: [:standings, :horses]
+  before_action :redirect_to_login, unless: :logged_in?, only: [:standings, :my_bets, :all_bets]
 
   def new
     @active_nav_tab = :signup
@@ -40,8 +40,16 @@ class UsersController < ApplicationController
     render "standings_#{@active_tab}"
   end
 
-  def horses
-    @active_nav_tab = :horses
+  def my_bets
+    @active_nav_tab = :special_bets
+    @active_tab = :my_bets
+  end
+
+  def all_bets
+    @active_nav_tab = :special_bets
+    @active_tab = :all_bets
+    @users = current_account.users.all
+    @ranking = Ranker.rank(@users, by: :points)
   end
 
   def update_horses
