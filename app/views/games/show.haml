@@ -37,7 +37,7 @@
         - if current_account.nadir_enabled
           %td
             - if bet.nadir? and bet.bingo?
-              %i.icon.fa.fa-star.large-font.green{title: 'Rare Bet and Bingo', rel: 'tooltip'}
+              %i.icon.fa.fa-star.large-font.green{title: 'Rare Bet', rel: 'tooltip'}
             -elsif bet.nadir?
               %i.icon.fa.fa-star.large-font.dark-red{title: 'Rare Bet', rel: 'tooltip'}
         %td

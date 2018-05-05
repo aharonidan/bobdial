@@ -81,6 +81,10 @@ footer {
   padding: 0;
 }
 
+.border-bottom{
+  border-bottom: 1px solid #dbdbdb;
+}
+
 a.navbar-burger:hover{
   color: inherit;
 }
@@ -236,6 +240,11 @@ table.table {
 
 }
 
+.stadium-text{
+  color: darkgrey;
+  font-size: 12px;
+}
+
 .display-block{
   display: block;
 }
@@ -246,6 +255,10 @@ table.table {
 
 .float-right {
   float: right;
+}
+
+.float-left {
+  float: left;
 }
 
 h1.title{
@@ -314,6 +327,10 @@ h1.title:not(:last-child){
 
 .fixed-width {
   width: 160px;
+}
+
+#bets-form tr:nth-last-child(2) td.action-button{
+  border-bottom: none;
 }
 
 #tooltip {

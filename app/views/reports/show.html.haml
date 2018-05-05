@@ -1,0 +1,18 @@
+.columns.no-padding-bottom.is-mobile
+  .column.is-2.text-centered
+    .clickable.padded{'data-href' => '/reports'}
+      %a.fa.fa-chevron-left
+  .column
+
+.columns.is-mobile.border-bottom
+  .column.is-three-quarters
+    %h2.subtitle.padded= "Daily report by #{@report.user.name}"
+  .column
+    %h2.subtitle.padded= "#{@report.report_date.strftime('%d/%m')}"
+.s10
+.content.left-margin.right-margin
+  - for line in @report.content.split("\n")
+    %p{dir: "RTL"}
+      = line
+.s60
+

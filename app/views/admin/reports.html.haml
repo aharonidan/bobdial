@@ -1,0 +1,35 @@
+%h1.title Admin - Reports Settings
+
+= render '/messages'
+%a.button.is-text{href: '/admin/settings'} Admin games settings
+.s20
+
+-if @reports.any?
+  %table.table.is-full-width
+    %thead
+      %th ID
+      %th Author
+      %th Date
+      %th
+      %th
+
+    %tbody
+      - for report in @reports
+        %tr
+          %td= report.id
+          %td= report.user.name.titleize
+          %td= report.report_date
+          %td= link_to "View", "/reports/#{report.id}", class: 'button is-info'
+          %td= link_to "Delete", "/admin/reports/#{report.id}", method: :delete, class: 'button is-danger'
+
+
+.s40
+%h2.subtitle Create Report
+= form_for @report do |f|
+  %label.label Author
+  .select
+    = f.collection_select :user_id, current_account.users, :id, :name, required: true
+  %label.label Report Date
+  = f.date_field :report_date, required: true
+  = f.text_area :content, class: 'textarea', dir: "rtl", required: true
+  = f.submit "Submit", class: "button is-block is-primary is-large is-fullwidth"

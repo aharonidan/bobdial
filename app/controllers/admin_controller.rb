@@ -12,10 +12,22 @@ class AdminController < ApplicationController
   	@settings = Setting.all
   end
 
+  def reports
+    @active_nav_tab == :admin
+    @reports = Report.all
+    @report = Report.new
+  end
+
   def create
   	Setting.create(name: params[:name], value: params[:value])
   	flash[:success] = "Submitted Successfully"
   	redirect_to '/admin/horses'
+  end
+
+  def delete_report
+    Report.find(params[:id]).delete
+    flash[:success] = "Deleted Successfully"
+    redirect_to '/admin/reports'
   end
 
   def delete

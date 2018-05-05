@@ -1,13 +1,22 @@
 Rails.application.routes.draw do
 
+  get 'reports', to: 'reports#index'
+  get 'reports/:id', to:'reports#show'
+  post 'reports', to: 'reports#create'
+
+
   get  'horses', to: 'users#horses'
   post 'horses', to: 'users#update_horses'
 
   post 'games/update', to: 'games#update'
 
   delete 'admin/horses/:id', to: 'admin#delete'
+  delete 'admin/reports/:id', to: 'admin#delete_report'
+
   post 'admin/horses', to: 'admin#create'
   get 'admin/horses'
+
+  get 'admin/reports'
   get 'admin/settings'
 
   get 'games/:id', to: 'games#show'

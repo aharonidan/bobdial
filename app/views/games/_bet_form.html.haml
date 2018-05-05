@@ -1,6 +1,8 @@
 %tr.no-border
-  %td.no-padding-bottom{'colspan' => 4}
-    %p= game.match_time.strftime('%d/%m %H:%M') if game.match_time
+  %td.no-padding-bottom{'colspan' => 1}
+    =game.match_time.strftime('%d/%m %H:%M') if game.match_time
+  %td.no-padding-bottom.align-right.stadium-text{'colspan' => 3}
+    =game.stadium
   - if game.not_editable?
     %td.next-arrow.clickable.action-button{'rowspan' => 2, 'data-href' => "/games/#{game.id}" }
       %a.fa.fa-chevron-right
@@ -12,16 +14,16 @@
 
 %tr{class: (bet or game.not_editable?) ? 'clickable' : '', 'data-href' => game.not_editable? ? "/games/#{game.id}" : nil, 'data-edit' => (bet and game.editable?) ? 'editable' : nil }
   %input{type: :hidden, name: :game_id, value: game.id}
-  %td.left-bet-td
+  %td.left-bet-td.align-right
     - unless game.place_holder?
-      %img.flag_icon{src: "/flags/#{game.team_a.name}.png"}
+      %img.flag_icon.float-left{src: "/flags/#{game.team_a.name}.png"}
     %label= game.team_a.name.titleize
   %td.no-padding
     %input.input.one_digit.score_a{name: "bets[#{game.id}][score_a]", size: 1, maxlength: 1, value: bet ? bet.score_a : '', disabled: (game.not_editable? or bet.present?), type: :tel}
   %td.no-padding
     %input.input.one_digit.score_b{name: "bets[#{game.id}][score_b]", size: 1, maxlength: 1, value: bet ? bet.score_b : '', disabled: (game.not_editable? or bet.present?), type: :tel}
-  %td
-    - unless game.place_holder?
-      %img.flag_icon{src: "/flags/#{game.team_b.name}.png"}
+  %td.left-bet-td
     %label= game.team_b.name.titleize
+    - unless game.place_holder?
+      %img.flag_icon.float-right{src: "/flags/#{game.team_b.name}.png"}
 
