@@ -118,13 +118,13 @@ a.navbar-burger:hover{
 }
 
 table tr td.no-padding {
-  padding-right: 1px;
-  padding-left: 3px;
+  padding-right: 1px !important;
+  padding-left: 3px !important;
 }
 
 table tr td.left-bet-td {
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-right: 4px !important;
+  padding-left: 4px !important;
 }
 
 table tr td.no-padding-bottom{
@@ -184,7 +184,8 @@ table.table th.align-bottom{
 .flag_icon {
   max-width: 32px;
   margin-bottom: -3px;
-  margin-right: 3px;
+  margin-right: 2px;
+  margin-left: 2px;
 }
 
 table tr.no-border {
@@ -221,7 +222,6 @@ table tr td.action-button{
   vertical-align: middle;
   text-align: center;
   border-bottom: 1px solid #dbdbdb;
-  width: 30px;
   a {
     display: block;
   }
@@ -333,8 +333,13 @@ h1.title:not(:last-child){
   width: 160px;
 }
 
-#bets-form tr:nth-last-child(2) td.action-button{
-  border-bottom: none;
+#bets-form {
+  tr:nth-last-child(2) td.action-button{
+    border-bottom: none;
+  }
+  .table td {
+    padding: 0.5em 0.5em;
+  }
 }
 
 #tooltip {

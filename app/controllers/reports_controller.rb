@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   def index
+    @active_nav_tab = :standings
   	@active_tab = 'reports'
   	@reports = Report.all
   end
