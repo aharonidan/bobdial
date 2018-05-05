@@ -22,7 +22,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_path
+      log_in @user
+      remember @user
+      redirect_to '/standings/points'
+      flash.discard
     else
       flash[:error] = @user.errors.full_messages
       redirect_to "/users/new?account_name=#{@user.account.name}"
