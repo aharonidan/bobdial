@@ -38,7 +38,7 @@
           %td
             - if bet.nadir? and bet.bingo?
               %i.icon.fa.fa-star.large-font.green{title: 'Rare Bet', rel: 'tooltip'}
-            - if bet.nadir? and not @game.played?
+            - elsif bet.nadir? and not @game.played?
               %i.icon.fa.fa-star.large-font.orange{title: 'Rare Bet', rel: 'tooltip'}
             -elsif bet.nadir?
               %i.icon.fa.fa-star.large-font.dark-red{title: 'Rare Bet', rel: 'tooltip'}
