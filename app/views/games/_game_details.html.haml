@@ -1,0 +1,26 @@
+.columns.no-padding-bottom.is-mobile
+  .column.is-2.text-centered
+    .clickable.padded{'data-href' => games_page(@game)}
+      %a.fa.fa-chevron-left
+  .column
+.section.padded
+  .columns.is-mobile
+    .column.is-4=@game.match_time.strftime('%d/%m %H:%M')
+    .column.align-right= @game.stadium
+  .columns.game-score.is-mobile
+    .column
+      %img.flag_icon.float-left{src: "/flags/#{@game.team_a.name}.png"}
+      = @game.team_a.name.titleize
+    .column.is-1.boxed.text-centered= @game.score_a
+    .column.is-1.boxed.text-centered= @game.score_b
+    .column.align-right
+      = @game.team_b.name.titleize
+      %img.flag_icon{src: "/flags/#{@game.team_b.name}.png"}
+.s20
+.tabs
+  %ul
+    %li{ class: @active_tab == :bets ? 'is-active' : '' }
+      %a{href: "/games/#{@game.id}"} Bets
+    %li{ class: @active_tab == :stats ? 'is-active' : '' }
+      %a{href: "/games/#{@game.id}/stats"} Stats
+.s20

@@ -24,6 +24,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_median (0.1.4)
+      activerecord
     activejob (5.1.6)
       activesupport (= 5.1.6)
       globalid (>= 0.3.6)
@@ -47,6 +49,7 @@ GEM
     bulma-rails (0.6.2)
       sass (~> 3.2)
     byebug (10.0.2)
+    chartkick (2.3.4)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -64,6 +67,8 @@ GEM
       railties (>= 3.2, < 5.2)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    groupdate (4.0.1)
+      activesupport (>= 4.2)
     haml (5.0.4)
       temple (>= 0.8.0)
       tilt
@@ -185,12 +190,15 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_median
   autoprefixer-rails
   bcrypt
   bulma-rails (~> 0.6.2)
   byebug
+  chartkick
   coffee-rails
   font-awesome-rails
+  groupdate
   haml-rails
   jquery-rails
   listen

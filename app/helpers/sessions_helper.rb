@@ -76,9 +76,9 @@ module SessionsHelper
 
   def games_page game
     if game.is_playoff
-      "knockout_stage/#{game.group}"
+      "/games/knockout_stage/#{game.group}"
     else
-      "group_stage/#{game.group}"
+      "/games/group_stage/#{game.group}"
     end
   end
 

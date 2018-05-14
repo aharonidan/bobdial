@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'admin/settings'
 
   get 'games/:id', to: 'games#show'
+  get 'games/:id/stats', to: 'games#stats'
 
   get 'standings/:tab', to: 'users#standings'
 

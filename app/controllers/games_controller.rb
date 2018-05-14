@@ -24,7 +24,25 @@ class GamesController < ApplicationController
     if @game.editable?
       redirect_to '/unauthorized'
     else
+      @active_tab = :bets
       @bets = current_account.bets(game: @game)
+    end
+  end
+
+  def stats
+    @game = Game.find(params[:id])
+    @active_nav_tab = @game.is_playoff ? :knockout_stage : :group_stage
+    if @game.editable?
+      redirect_to '/unauthorized'
+    else
+      @active_tab = :stats
+      bets = current_account.bets(game: @game)
+      @bets_stats = {}
+
+      for bet in bets
+        @bets_stats["#{bet.score_a} - #{bet.score_b}"] ||= 0
+        @bets_stats["#{bet.score_a} - #{bet.score_b}"] += 1
+      end
     end
   end
 

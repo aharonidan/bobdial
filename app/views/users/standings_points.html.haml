@@ -14,13 +14,6 @@
 				%tr
 					%td.text-centered= rank.rank
 					%td= user.name
-					- if bopdial_started?
-						%td.text-centered= user.points
-						%td.text-centered= user.bingo
-						%td.text-centered= user.donkey
-					- else
-						%td
-						%td
-						%td
-
-
+					%td.text-centered= user.points
+					%td.text-centered= user.bingo
+					%td.text-centered= user.donkey

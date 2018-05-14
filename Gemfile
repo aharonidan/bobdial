@@ -16,7 +16,13 @@ gem 'autoprefixer-rails'
 # password encryption
 gem 'bcrypt'
 
+# standings ranking
 gem 'ranker'
+
+# charts
+gem 'chartkick'
+gem 'groupdate'
+gem 'active_median'
 
 group :development, :test do
   gem 'sqlite3'
