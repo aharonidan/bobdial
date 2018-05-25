@@ -74,6 +74,10 @@ module SessionsHelper
     @started = Game.first.not_editable?
   end
 
+  def bop_account?
+    current_account.name.downcase == 'bop'
+  end
+
   def games_page game
     if game.is_playoff
       "/games/knockout_stage/#{game.group}"
