@@ -1,0 +1,13 @@
+- if deadline == @active_deadline
+  %tbody.tbody.active-deadline
+    %tr.no-border
+      %td{colspan: 2}
+        %i.icon.fa.fa-hourglass
+        Time Left
+      %td.time-left.align-right{colspan: 3, 'data-deadline' => deadline}
+    - for game in games
+      = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
+- else
+  %tbody.tbody
+    - for game in games
+      = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}

@@ -8,6 +8,20 @@ class GamesController < ApplicationController
     @active_nav_tab = :group_stage
     @active_tab  = params[:group]
     @games       = Game.where(group: params[:group]).order(:id)
+    @games_by_round = {}
+    deadlines = []
+    for game in @games
+      @games_by_round[game.deadline] ||= []
+      @games_by_round[game.deadline] << game
+      deadlines << game.deadline
+    end
+
+    deadlines.uniq!
+    now = Time.now
+    deadlines << now
+    deadlines.sort!
+    @active_deadline = deadlines[deadlines.index(now) + 1]
+
     @bets        = Bet.where(user: current_user, group: params[:group])
   end
 
