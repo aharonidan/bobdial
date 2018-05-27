@@ -2,7 +2,7 @@
   %tbody.tbody.active-deadline
     %tr.no-border
       %td{colspan: 2}
-        %i.icon.fa.fa-hourglass
+        %img.icon-inline-text{src: '/images/hourglass.png'}
         Time Left
       %td.time-left.align-right{colspan: 3, 'data-deadline' => deadline}= countdown(deadline)
     - for game in games
