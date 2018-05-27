@@ -19,6 +19,9 @@ gem 'bcrypt'
 # standings ranking
 gem 'ranker'
 
+# countdown timer
+gem 'timepiece'
+
 # charts
 gem 'chartkick'
 gem 'groupdate'
