@@ -20,7 +20,7 @@ gem 'bcrypt'
 gem 'ranker'
 
 # countdown timer
-gem 'timepiece'
+gem 'timepiece', git: 'https://github.com/aharonidan/timepiece.git'
 
 # charts
 gem 'chartkick'
