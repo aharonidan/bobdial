@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/aharonidan/timepiece.git
-  revision: 72d98389b74f813340a1c3362ae6d85d89c9102f
+  revision: 3bb65d719ab6b495c89340edaf157034e2b3c089
   specs:
     timepiece (0.4.1)
       jquery-rails (>= 3.0.0)
