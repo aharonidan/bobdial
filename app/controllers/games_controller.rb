@@ -17,7 +17,7 @@ class GamesController < ApplicationController
     end
 
     deadlines.uniq!
-    now = Time.now
+    now = Time.now + 3.hours
     deadlines << now
     deadlines.sort!
     @active_deadline = deadlines[deadlines.index(now) + 1]
