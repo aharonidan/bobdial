@@ -61,6 +61,15 @@ class UsersController < ApplicationController
         @charts_data << chart
         @groups_data << groups
       end
+      @nadir_chart = {}
+      for user in current_account.users
+        @nadir_chart[user.name] = 0
+        for bet in user.bets
+          next if bet.game.editable?
+          @nadir_chart[user.name] += 1 if bet.nadir?
+        end
+      end
+      @nadir_chart = @nadir_chart.sort_by { |_, v| -v }.first(5)
     end
     render "standings_#{@active_tab}"
   end
