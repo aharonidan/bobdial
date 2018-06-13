@@ -5,6 +5,7 @@ class User < ApplicationRecord
   belongs_to :grey_horse,  class_name: 'Team', optional: true
   belongs_to :champion,    class_name: 'Team', optional: true
   has_many :bets
+  has_many :user_stats
 
   validate :horses_do_not_change_after_deadline, on: :update
 

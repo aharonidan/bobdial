@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180504161443) do
+ActiveRecord::Schema.define(version: 20180612223538) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
@@ -66,6 +66,20 @@ ActiveRecord::Schema.define(version: 20180504161443) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stats", force: :cascade do |t|
+    t.string "name"
+    t.integer "num_of_groups"
+    t.string "group_a"
+    t.string "group_b"
+    t.string "group_c"
+    t.string "group_d"
+    t.string "group_e"
+    t.string "group_f"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "account_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "group"
@@ -74,6 +88,16 @@ ActiveRecord::Schema.define(version: 20180504161443) do
     t.string "after_army_trip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "user_stats", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "stat_id"
+    t.string "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["stat_id"], name: "index_user_stats_on_stat_id"
+    t.index ["user_id"], name: "index_user_stats_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

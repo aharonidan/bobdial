@@ -1,4 +1,8 @@
 %h1.title Standings
 = render 'users/table_tabs'
-.s20
-%p.left-margin Coming Soon!
+- if current_account.stats.empty? or (not Game.first.played?)
+	.s20
+	%p.left-margin Coming Soon!
+- else
+	- for chart in @charts_data
+		= column_chart(chart)

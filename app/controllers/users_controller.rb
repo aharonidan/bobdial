@@ -37,6 +37,25 @@ class UsersController < ApplicationController
     @active_tab = params[:tab]
     @users = current_account.users.all
     @ranking = Ranker.rank(@users, by: :points)
+
+    if @active_tab == 'statistics'
+      @charts_data = []
+      for stat in current_account.stats
+        chart = {}
+        for user in current_account.users
+          if user_stat = user.user_stats.where(stat: stat).take
+            category = stat.send(user_stat.value)
+
+            chart[category] ||= [0, 0]
+
+            chart[category][0] += 1
+            chart[category][1] += user.points
+          end
+        end
+        chart.each {|k,v| chart[k] = chart[k][1] / Float(chart[k][0])}
+        @charts_data << chart
+      end
+    end
     render "standings_#{@active_tab}"
   end
 
