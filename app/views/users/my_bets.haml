@@ -1,7 +1,7 @@
 %h1.title Special Bets
 = render 'horses_tabs'
 .s10
-- if horses_editable?
+- if horses_editable?(account: current_account)
   = render 'horses_form'
 - else
   = render 'horses_show'

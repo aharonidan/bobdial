@@ -4,7 +4,7 @@ class Bet < ApplicationRecord
   has_one :account, through: :user
 
   validate do |bet|
-    if bet.game.not_editable?
+    if bet.game.not_editable?(account: user.account)
       bet.errors[:base] << "Bet not editable"
     end
   end

@@ -71,12 +71,17 @@ module SessionsHelper
 
   def bopdial_started?
     return @started if @started
-    @started = Game.first.not_editable?
+    @started = Game.first.not_editable?(account: current_account)
   end
 
   def bop_account?
     current_account.name.downcase == 'bop'
   end
+
+  def tzevet_account?
+    current_account.name == '5101'
+  end
+
 
   def games_page game
     if game.is_playoff

@@ -4,29 +4,33 @@ class Game < ApplicationRecord
 
   after_update { User.calculate_points }
 
-  def not_editable?
+  def not_editable?(account: nil)
     # adjusting to Israel time
-    (Time.now + 3.hours) > deadline || self.not_editable
+    if account and account.name == '5101'
+      (Time.now + 1.day + 2.hours) > deadline || self.not_editable
+    else
+      (Time.now + 3.hours) > deadline || self.not_editable
+    end
   end
 
   def bets
     @bets ||= Bet.where(game_id: id)
   end
 
-  def editable?
-    not not_editable?
+  def editable?(account: nil)
+    not not_editable?(account: account)
   end
 
   def place_holder?
     team_a.group == 'place_holder'
   end
 
-  def self.horses_editable?
-    first.editable?
+  def self.horses_editable?(account: nil)
+    first.editable?(account: account)
   end
 
-  def self.horses_not_editable?
-    first.not_editable?
+  def self.horses_not_editable?(account: nil)
+    first.not_editable?(account: account)
   end
 
   def self.black_horse_announced?
