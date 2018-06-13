@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 
   def update_horses
 
-    if Game.horses_editable?
+    if Game.horses_editable?(account: current_account)
       current_user.update(
         black_horse_id: params[:black_horse_id],
         grey_horse_id: params[:grey_horse_id],

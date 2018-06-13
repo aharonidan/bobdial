@@ -32,8 +32,8 @@ module SessionsHelper
     current_user && current_user.is_admin
   end
 
-  def horses_editable?
-    Game.horses_editable?
+  def horses_editable?(account: nil)
+    Game.horses_editable?(account: account)
   end
 
   def after_army_options(continent)

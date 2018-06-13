@@ -23,7 +23,7 @@ class User < ApplicationRecord
   has_secure_password
 
   def horses_do_not_change_after_deadline
-    if Game.horses_not_editable? and (black_horse_id_changed? or grey_horse_id_changed? or champion_id_changed? or top_scorer_changed? or after_army_trip_changed?)
+    if Game.horses_not_editable?(account: account) and (black_horse_id_changed? or grey_horse_id_changed? or champion_id_changed? or top_scorer_changed? or after_army_trip_changed?)
       errors.add(:black_horse_id, "Change of horses after deadline not allowed!")
     end
   end

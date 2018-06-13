@@ -7,7 +7,7 @@ class Game < ApplicationRecord
   def not_editable?(account: nil)
     # adjusting to Israel time
     if account and account.name == '5101'
-      (Time.now + 1.day + 2.hours) > deadline || self.not_editable
+      (Time.now + 3.hours) > (deadline + 1.day - 1.hour) || self.not_editable
     else
       (Time.now + 3.hours) > deadline || self.not_editable
     end
