@@ -40,8 +40,11 @@ class UsersController < ApplicationController
 
     if @active_tab == 'statistics'
       @charts_data = []
+      @groups_data = []
       for stat in current_account.stats
         chart = {}
+        groups = {}
+
         for user in current_account.users
           if user_stat = user.user_stats.where(stat: stat).take
             category = stat.send(user_stat.value)
@@ -50,10 +53,13 @@ class UsersController < ApplicationController
 
             chart[category][0] += 1
             chart[category][1] += user.points
+            groups[category] ||= []
+            groups[category] << user.name
           end
         end
         chart.each {|k,v| chart[k] = chart[k][1] / Float(chart[k][0])}
         @charts_data << chart
+        @groups_data << groups
       end
     end
     render "standings_#{@active_tab}"
