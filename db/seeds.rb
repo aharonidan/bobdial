@@ -40,6 +40,7 @@ teams = [
   {name: 'Winner Group D', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
   {name: 'Winner Group E', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
   {name: 'Winner Group F', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
+  {name: 'Winner Group G', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
   {name: 'Winner Group H', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
   {name: 'Runner-up Group A', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
   {name: 'Runner-up Group B', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
@@ -47,6 +48,7 @@ teams = [
   {name: 'Runner-up Group D', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
   {name: 'Runner-up Group E', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
   {name: 'Runner-up Group F', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
+  {name: 'Runner-up Group G', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
   {name: 'Runner-up Group H', group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
   {name: 'To be announced',   group: 'place_holder', black_horse: false, grey_horse: false,  after_army_trip: ''},
  ]

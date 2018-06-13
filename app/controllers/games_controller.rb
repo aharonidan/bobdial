@@ -28,7 +28,7 @@ class GamesController < ApplicationController
   def knockout_stage
     @active_nav_tab = :knockout_stage
     @active_tab  = params[:phase]
-    @games = Game.where(group: params[:phase]).order(:id)
+    @games = Game.where(group: params[:phase]).order(:match_time)
     @bets  = Bet.where(user: current_user, group: params[:phase])
   end
 
