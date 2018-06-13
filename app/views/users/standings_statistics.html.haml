@@ -6,7 +6,7 @@
 - else
 	- if bop_account?
 		.s20
-		%label.label.center Rare Bets Leaders
+		%label.label.center המהמרים הבלתי צפוים
 		= column_chart @nadir_chart, colors: ["#b00", "#666"], ytitle: "Rare Bets Count"
 	- if Game.first.played?
 		- @charts_data.each_with_index do |chart, index|

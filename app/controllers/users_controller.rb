@@ -61,6 +61,7 @@ class UsersController < ApplicationController
         @charts_data << chart
         @groups_data << groups
       end
+
       @nadir_chart = {}
       for user in current_account.users
         @nadir_chart[user.name] = 0
