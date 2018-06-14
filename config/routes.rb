@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   get 'standings/:tab', to: 'users#standings'
 
+  get 'statistics/:tab', to: 'users#statistics'
+
   get 'rules', to: 'static_pages#rules'
   get 'unauthorized', to: 'static_pages#unauthorized'
 

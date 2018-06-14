@@ -1,24 +1,18 @@
 %h1.title Standings
 = render 'users/table_tabs'
-- if current_account.stats.empty?
-	.s20
-	%p.left-margin Coming Soon!
+
+- if not bop_account?
+  .s20
+  %p.left-margin Coming Soon!
 - else
-	- if bop_account?
-		.s20
-		%label.label.center המהמרים הבלתי צפוים
-		= column_chart @nadir_chart, colors: ["#b00", "#666"], ytitle: "Rare Bets Count"
-	- if Game.first.played?
-		- @charts_data.each_with_index do |chart, index|
-			- if index % 2 == 0
-				= column_chart chart
-			- else
-				= column_chart chart, colors: ["#b00", "#666"]
-			%table.table
-				%tbody
-					- @groups_data[index].each do |category, users|
-						%tr.no-border-bottom
-							%td
-								%label.label= category
-							%td
-								= users.join(', ')
+  .tabs.is-toggle.is-fullwidth
+    %ul
+      %li{ class: @active_subtab == 'leaders' ? 'is-active' : '' }
+        %a{href: '/statistics/leaders'} Leaders
+      %li{ class: @active_subtab == 'segments' ? 'is-active' : '' }
+        %a{href: '/statistics/segments'} Segments
+
+  - if @active_subtab == 'leaders'
+    = render '/users/statistics_leaders'
+  - elsif @active_subtab == 'segments'
+    = render '/users/statistics_segments'
