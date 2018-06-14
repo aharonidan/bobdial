@@ -6,6 +6,7 @@ class ReportsController < ApplicationController
   end
 
   def show
+    @active_nav_tab = :standings
   	@report = Report.find(params[:id])
   end
 
