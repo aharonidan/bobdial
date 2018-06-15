@@ -65,8 +65,8 @@ class User < ApplicationRecord
 
   def calculate_points
     sum = 0
-    for bet in bets
-      sum += bet.points if bet.game.played?
+    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+      sum += bet.points
     end
 
     # sum += black_horse_points
