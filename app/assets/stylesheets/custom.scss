@@ -46,6 +46,10 @@ nav.navbar.is-dark{
   padding-top: 0;
 }
 
+.tabs.is-toggle li a{
+  border-radius: 0 !important;
+}
+
 footer {
   border-top: 1px #c0392b solid;
   position: fixed;
