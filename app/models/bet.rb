@@ -103,9 +103,8 @@ class Bet < ApplicationRecord
 
   def points
 
-    return unless game.played?
-
     return super if super
+    return unless game.played?
 
     result = if bingo_level_1?
       5
