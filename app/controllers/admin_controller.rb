@@ -4,7 +4,7 @@ class AdminController < ApplicationController
 
   def settings
     @active_nav_tab = :admin
-    @games = Game.all.order(:id)
+    @games = Game.all.order(:match_time)
   end
 
   def horses
