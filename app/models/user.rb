@@ -69,11 +69,11 @@ class User < ApplicationRecord
       sum += bet.points if bet.game.played?
     end
 
-    sum += black_horse_points
-    sum += grey_horse_points
-    sum += after_army_trip_points
-    sum += champion_points
-    sum += top_scorer_points
+    # sum += black_horse_points
+    # sum += grey_horse_points
+    # sum += after_army_trip_points
+    # sum += champion_points
+    # sum += top_scorer_points
 
     update(points: sum)
 

@@ -4,7 +4,7 @@ class Bet < ApplicationRecord
   has_one :account, through: :user
 
   validate do |bet|
-    if bet.game.not_editable?(account: user.account)
+    if bet.game.not_editable?(account: user.account) and (score_a_changed? or score_b_changed?)
       bet.errors[:base] << "Bet not editable"
     end
   end
@@ -105,6 +105,8 @@ class Bet < ApplicationRecord
 
     return unless game.played?
 
+    return super if super
+
     result = if bingo_level_1?
       5
     elsif bingo_level_2?
@@ -128,6 +130,8 @@ class Bet < ApplicationRecord
     result += 1 if result > 0 and playoff?
 
     result -= 1 if result < 0 and playoff?
+
+    update(points: result)
 
     result
 

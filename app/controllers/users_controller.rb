@@ -67,7 +67,6 @@ class UsersController < ApplicationController
 
   def calculate_statistics
     case params[:tab]
-
     when 'leaders'
       calculate_statistics_leaders
     when 'segments'

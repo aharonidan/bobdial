@@ -14,8 +14,6 @@ class BetsController < ApplicationController
         Bet.create(game: game, user: current_user, score_a: bet[:score_a], score_b: bet[:score_b], group: game.group)
       end
     end
-    flash[:success] = "Submitted Successfully"
     redirect_back fallback_location: root_path
-
   end
 end
