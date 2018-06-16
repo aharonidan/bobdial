@@ -4,10 +4,7 @@
       %td{colspan: 2}
         %img.icon-inline-text{src: '/images/hourglass.png'}
         Time Left
-      - if tzevet_account?
-        %td.time-left.align-right{colspan: 3, 'data-deadline' => deadline}= countdown(deadline + 1.day - 4.hours)
-      - else
-        %td.time-left.align-right{colspan: 3, 'data-deadline' => deadline}= countdown(deadline - 3.hours)
+      %td.time-left.align-right{colspan: 3, 'data-deadline' => deadline}= countdown(deadline - 3.hours)
     - for game in games
       = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
 - else
