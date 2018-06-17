@@ -145,7 +145,7 @@ class User < ApplicationRecord
   def goal_diffrence
     sum = 0
     for bet in bets.joins(:game).where.not(games: {score_a: nil})
-      sum += 1 if bet.goal_difference?
+      sum += 1 if bet.goal_difference? and !bet.draw?
     end
     sum
   end
@@ -153,7 +153,7 @@ class User < ApplicationRecord
   def kivoon
     sum = 0
     for bet in bets.joins(:game).where.not(games: {score_a: nil})
-      sum += 1 if !bet.goal_difference? and bet.kivoon?
+      sum += 1 if (!bet.goal_difference? and bet.kivoon?) or (bet.draw? and bet.kivoon?)
     end
     sum
   end
