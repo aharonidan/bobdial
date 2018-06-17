@@ -14,7 +14,7 @@
 		%th{title: 'Bingo', rel: 'tooltip'}
 			%img.icon.is-medium.image-center{src: '/images/bingo-black.png'}
 		- if bop_account?
-			%th{title: 'Rare', rel: 'tooltip'}
+			%th{title: 'Rare Bingo', rel: 'tooltip'}
 				%img.icon.is-medium.image-center{src: '/images/nadir.png'}
 		%th{title: 'Donkey', rel: 'tooltip'}
 			%img.icon.is-medium.image-center{src: '/images/donkey-black2.png'}
@@ -32,5 +32,5 @@
 					%td.min-width.text-centered= user.goal_diffrence
 					%td.min-width.text-centered= user.bingo
 					- if bop_account?
-						%td.min-width.text-centered= user.nadir
+						%td.min-width.text-centered= user.nadir_bingo
 					%td.min-width.text-centered= user.donkey

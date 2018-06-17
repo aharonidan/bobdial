@@ -134,6 +134,14 @@ class User < ApplicationRecord
     sum
   end
 
+  def nadir_bingo
+    sum = 0
+    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+      sum += 1 if bet.bingo? and bet.nadir?
+    end
+    sum
+  end
+
   def goal_diffrence
     sum = 0
     for bet in bets.joins(:game).where.not(games: {score_a: nil})
