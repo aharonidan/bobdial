@@ -15,8 +15,8 @@
 -if game.played?
   %tr.no-border.stadium-text
     %td.no-padding-top Final score
-    %td.no-padding-top.text-centered= game.score_a
-    %td.no-padding-top.text-centered= game.score_b
+    %td.no-padding-top.text-centered.regular-size= game.score_a
+    %td.no-padding-top.text-centered.regular-size= game.score_b
     %td.no-padding-top
 
 %tr{class: (bet or game.not_editable?(account: current_account)) ? 'clickable' : '', 'data-href' => game.not_editable?(account: current_account) ? "/games/#{game.id}" : nil, 'data-edit' => (bet and game.editable?(account: current_account)) ? 'editable' : nil }
