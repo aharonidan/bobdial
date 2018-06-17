@@ -1,19 +1,36 @@
 %h1.title Standings
 = render 'users/table_tabs'
 .s10
-%table.table.is-full-width.word-wrap.is-hoverable
+%table.table.is-full-width.display-block.word-wrap
 	%thead
 		%th.text-centered #
 		%th Name
-		%th.text-centered Points
-		%th.text-centered Bingo
-		%th.text-centered Donkey
+		%th.text-centered Pts
+		%th
+		%th.wide-column{title: 'Kivoon', rel: 'tooltip'}
+			%img.icon.is-medium.image-center{src: '/images/kivoon.jpg', style: 'width: 53px;'}
+		%th{title: 'Goal Difference', rel: 'tooltip'}
+			%img.icon.is-medium.image-center{src: '/images/difference.png'}
+		%th{title: 'Bingo', rel: 'tooltip'}
+			%img.icon.is-medium.image-center{src: '/images/bingo-black.png'}
+		- if bop_account?
+			%th{title: 'Rare', rel: 'tooltip'}
+				%img.icon.is-medium.image-center{src: '/images/nadir.png'}
+		%th{title: 'Donkey', rel: 'tooltip'}
+			%img.icon.is-medium.image-center{src: '/images/donkey-black2.png'}
+
+
 	%tbody
 		- for rank in @ranking
 			- for user in rank.rankables
 				%tr
 					%td.text-centered= rank.rank
 					%td= user.name
-					%td.text-centered= user.points
-					%td.text-centered= user.bingo
-					%td.text-centered= user.donkey
+					%td.min-width.text-centered= user.points
+					%td
+					%td.min-width.text-centered= user.kivoon
+					%td.min-width.text-centered= user.goal_diffrence
+					%td.min-width.text-centered= user.bingo
+					- if bop_account?
+						%td.min-width.text-centered= user.nadir
+					%td.min-width.text-centered= user.donkey

@@ -111,8 +111,8 @@ class User < ApplicationRecord
   def donkey
     sum = 0
 
-    for bet in bets
-      sum += 1 if bet.game.played? and bet.donkey?
+    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+      sum += 1 if bet.donkey?
     end
     sum
   end
@@ -120,11 +120,36 @@ class User < ApplicationRecord
     def bingo
     sum = 0
 
-    for bet in bets
-      sum += 1 if bet.game.played? and bet.bingo?
+    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+      sum += 1 if bet.bingo?
     end
     sum
   end
+
+  def nadir
+    sum = 0
+    for bet in bets
+      sum += 1 if bet.game.not_editable? and bet.nadir?
+    end
+    sum
+  end
+
+  def goal_diffrence
+    sum = 0
+    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+      sum += 1 if bet.goal_difference?
+    end
+    sum
+  end
+
+  def kivoon
+    sum = 0
+    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+      sum += 1 if !bet.goal_difference? and bet.kivoon?
+    end
+    sum
+  end
+
 
   def account_name= value
     self.account = Account.where(name: value).first

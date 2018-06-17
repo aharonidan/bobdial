@@ -21,6 +21,14 @@ body{
   margin: auto;
 }
 
+.min-width{
+  min-width: 50px !important;
+}
+
+.wide-column{
+  padding: 5px 0 !important;
+}
+
 nav.navbar.is-dark{
   background-image: url("/images/navbar-background.png");
   background-size: 200px;
