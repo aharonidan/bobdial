@@ -178,6 +178,10 @@ button.button.submit-button{
   font-size: 20px;
 }
 
+.no-padding-top{
+  padding-top: 0 !important;
+}
+
 .hidden{
   visibility: hidden;
 }
@@ -359,6 +363,10 @@ h1.title:not(:last-child){
 
 #bets-form {
   tr:nth-last-child(2) td.action-button{
+    border-bottom: none;
+  }
+
+  tr:nth-last-child(3) td.action-button{
     border-bottom: none;
   }
   .table td {

@@ -3,14 +3,21 @@
     =game.match_time.strftime('%d/%m %H:%M') if game.match_time
   %td.no-padding-bottom.align-right.stadium-text{'colspan' => 3}
     =game.stadium
+  - rowspan = game.played? ? 3 : 2
   - if game.not_editable?(account: current_account)
-    %td.next-arrow.clickable.action-button{'rowspan' => 2, 'data-href' => "/games/#{game.id}" }
+    %td.next-arrow.clickable.action-button{'rowspan' => rowspan, 'data-href' => "/games/#{game.id}" }
       %a.fa.fa-chevron-right
   - elsif bet
-    %td.edit-bet.clickable.action-button{'rowspan' => 2}
+    %td.edit-bet.clickable.action-button{'rowspan' => rowspan}
       %a.fa.fa-pencil
   - else
-    %td.action-button{'rowspan' => 2}
+    %td.action-button{'rowspan' => rowspan}
+-if game.played?
+  %tr.no-border.stadium-text
+    %td.no-padding-top Final score
+    %td.no-padding-top.text-centered= game.score_a
+    %td.no-padding-top.text-centered= game.score_b
+    %td.no-padding-top
 
 %tr{class: (bet or game.not_editable?(account: current_account)) ? 'clickable' : '', 'data-href' => game.not_editable?(account: current_account) ? "/games/#{game.id}" : nil, 'data-edit' => (bet and game.editable?(account: current_account)) ? 'editable' : nil }
   %input{type: :hidden, name: :game_id, value: game.id}
