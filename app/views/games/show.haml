@@ -3,8 +3,8 @@
 %table.table.is-hoverable.is-fullwidth.word-wrap
   %thead
     %tr
-      %th.align-right{colspan: 2}= @game.team_a.name.titleize
-      %th.align-left{colspan: 2}= @game.team_b.name.titleize
+      %th.align-right{colspan: 2}= short_name @game.team_a.name.titleize
+      %th.align-left{colspan: 2}= short_name @game.team_b.name.titleize
       %th.text-centered Pts
       - if current_account.nadir_enabled
         %th
