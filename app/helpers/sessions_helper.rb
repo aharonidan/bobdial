@@ -82,6 +82,14 @@ module SessionsHelper
     current_account.name == '5101'
   end
 
+  def short_name name
+    if name == 'Korea Republic'
+      'Korea Rep.'
+    else
+      name
+    end
+  end
+
 
   def games_page game
     if game.is_playoff
