@@ -1,5 +1,5 @@
 - if deadline == @active_deadline
-  %tbody.tbody.active-deadline
+  %tbody.active-deadline
     %tr.no-border
       %td{colspan: 2}
         %img.icon-inline-text{src: '/images/hourglass.png'}
@@ -8,6 +8,6 @@
     - for game in games
       = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
 - else
-  %tbody.tbody
+  %tbody.border-bottom
     - for game in games
       = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
