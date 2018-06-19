@@ -32,6 +32,13 @@ class GamesController < ApplicationController
     @bets  = Bet.where(user: current_user, group: params[:phase])
   end
 
+  def today
+    @active_nav_tab = :today
+    @active_tab  = params[:phase]
+    @games = Game.where(match_time: Date.today.beginning_of_day..Date.today.end_of_day).order(:match_time)
+    @bets  = Bet.where(user: current_user, game: @games)
+  end
+
   def show
     @game = Game.find(params[:id])
     @active_nav_tab = @game.is_playoff ? :knockout_stage : :group_stage
@@ -41,6 +48,7 @@ class GamesController < ApplicationController
       @active_tab = :bets
       @bets = current_account.bets(game: @game)
     end
+    @back = params[:back]
   end
 
   def stats

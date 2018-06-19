@@ -91,7 +91,9 @@ module SessionsHelper
   end
 
 
-  def games_page game
+  def games_page game, back
+    return '/games/today' if back == 'today'
+
     if game.is_playoff
       "/games/knockout_stage/#{game.group}"
     else

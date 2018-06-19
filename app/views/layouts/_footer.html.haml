@@ -6,6 +6,9 @@
           %a{href: '/standings/points'}
             %img.icon.large{src: @active_nav_tab == :standings ? '/images/podium-selected.png' : '/images/podium.png'}
         %li
+          %a{href: '/games/today'}
+            %img.icon.large{src: @active_nav_tab == :today ? '/images/today-selected.png' : '/images/today.png'}
+        %li
           %a{href: '/games/group_stage/a'}
             %img.icon.large{src: @active_nav_tab == :group_stage ? '/images/group-stage-selected.png' : '/images/group-stage.png'}
         %li
@@ -14,9 +17,6 @@
         %li
           %a{href: '/special_bets/my'}
             %img.icon.large{src: @active_nav_tab == :special_bets ? '/images/special-selected.png' : '/images/special.png'}
-        %li
-          %a{href: '/rules'}
-            %img.icon.large{src: @active_nav_tab == :rules ? '/images/rules-selected.png' : '/images/rules.png'}
   - else
     .tabs.is-fullwidth
       %ul

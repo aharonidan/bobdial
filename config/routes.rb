@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get  'special_bets/all', to: 'users#all_bets'
   post 'horses', to: 'users#update_horses'
 
-  post 'games/update', to: 'games#update'
 
   delete 'admin/horses/:id', to: 'admin#delete'
   delete 'admin/reports/:id', to: 'admin#delete_report'
@@ -20,8 +19,6 @@ Rails.application.routes.draw do
   get 'admin/reports'
   get 'admin/settings'
 
-  get 'games/:id', to: 'games#show'
-  get 'games/:id/stats', to: 'games#stats'
 
   get 'standings/:tab', to: 'users#standings'
 
@@ -35,6 +32,10 @@ Rails.application.routes.draw do
   get 'games/group_stage/:group', to: 'games#group_stage'
 
   get 'games/knockout_stage/:phase', to: 'games#knockout_stage'
+  get 'games/today', to: 'games#today'
+  get 'games/:id', to: 'games#show'
+  get 'games/:id/stats', to: 'games#stats'
+  post 'games/update', to: 'games#update'
 
   get 'sessions/new'
 
