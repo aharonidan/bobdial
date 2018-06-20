@@ -65,7 +65,7 @@ class User < ApplicationRecord
 
   def calculate_points
     sum = 0
-    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+    for bet in bets_of_played_games
       sum += bet.points
     end
 
@@ -108,10 +108,15 @@ class User < ApplicationRecord
     return 0
   end
 
+  def bets_of_played_games
+    return @bets_of_played_games if @bets_of_played_games
+    @bets_of_played_games = bets.joins(:game).where.not(games: {score_a: nil})
+  end
+
   def donkey
     sum = 0
 
-    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+    for bet in bets_of_played_games
       sum += 1 if bet.donkey?
     end
     sum
@@ -120,7 +125,7 @@ class User < ApplicationRecord
     def bingo
     sum = 0
 
-    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+    for bet in bets_of_played_games
       sum += 1 if bet.bingo?
     end
     sum
@@ -136,7 +141,7 @@ class User < ApplicationRecord
 
   def nadir_bingo
     sum = 0
-    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+    for bet in bets_of_played_games
       sum += 1 if bet.bingo? and bet.nadir?
     end
     sum
@@ -144,7 +149,7 @@ class User < ApplicationRecord
 
   def goal_diffrence
     sum = 0
-    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+    for bet in bets_of_played_games
       sum += 1 if bet.goal_difference? and !bet.draw?
     end
     sum
@@ -152,7 +157,7 @@ class User < ApplicationRecord
 
   def kivoon
     sum = 0
-    for bet in bets.joins(:game).where.not(games: {score_a: nil})
+    for bet in bets_of_played_games
       sum += 1 if (!bet.goal_difference? and bet.kivoon?) or (bet.draw? and bet.kivoon?)
     end
     sum
