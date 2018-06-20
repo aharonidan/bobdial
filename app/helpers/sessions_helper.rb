@@ -45,6 +45,9 @@ module SessionsHelper
   end
 
   def got_horse_right? title, user
+    return false if title == :black_horse and user.black_horse and user.black_horse.name == 'morocco'
+    return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'egypt'
+
     return true if not Game.send("#{title}_announced?")
     user.send("#{title}_points") > 0
   end
