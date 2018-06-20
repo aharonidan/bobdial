@@ -110,7 +110,7 @@ class User < ApplicationRecord
 
   def bets_of_played_games
     return @bets_of_played_games if @bets_of_played_games
-    @bets_of_played_games = bets.joins(:game).where.not(games: {score_a: nil}).joins(:game)
+    @bets_of_played_games = bets.joins(:game).where.not(games: {score_a: nil})
   end
 
   def donkey
