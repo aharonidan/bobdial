@@ -47,6 +47,7 @@ module SessionsHelper
   def got_horse_right? title, user
     return false if title == :black_horse and user.black_horse and user.black_horse.name == 'morocco'
     return false if title == :black_horse and user.black_horse and user.black_horse.name == 'saudi_arabia'
+    return false if title == :black_horse and user.black_horse and user.black_horse.name == 'costa_rica'
     return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'egypt'
     return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'peru'
 
