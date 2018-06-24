@@ -19,7 +19,7 @@
     %td.no-padding-top.text-centered.regular-size= game.score_b
     %td.no-padding-top
 
-%tr{class: (bet or game.not_editable?(account: current_account)) ? 'clickable' : '', 'data-href' => game.not_editable?(account: current_account) ? "/games/#{game.id}" : nil, 'data-edit' => (bet and game.editable?(account: current_account)) ? 'editable' : nil }
+%tr{class: (bet or game.not_editable?(account: current_account)) ? 'clickable' : '', 'data-href' => game.not_editable?(account: current_account) ? "/games/#{game.id}?back=#{back if defined?(back)}" : nil, 'data-edit' => (bet and game.editable?(account: current_account)) ? 'editable' : nil }
   %input{type: :hidden, name: :game_id, value: game.id}
   %td.left-bet-td.align-right
     - unless game.place_holder?
