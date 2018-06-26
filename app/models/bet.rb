@@ -128,6 +128,9 @@ class Bet < ApplicationRecord
 
     result += 1 if result > 0 and playoff?
 
+    result += 1 if result > 0 and playoff? and kivoon? and draw?
+    result += 1 if result > 0 and playoff? and bingo_specific?(1,1)
+
     result -= 1 if result < 0 and playoff?
 
     update(points: result)
