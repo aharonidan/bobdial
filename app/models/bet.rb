@@ -3,11 +3,11 @@ class Bet < ApplicationRecord
   belongs_to :user
   has_one :account, through: :user
 
-  # validate do |bet|
-  #   if bet.game.not_editable?(account: user.account) and (score_a_changed? or score_b_changed?)
-  #     bet.errors[:base] << "Bet not editable"
-  #   end
-  # end
+  validate do |bet|
+    if bet.game.not_editable?(account: user.account) and (score_a_changed? or score_b_changed?)
+      bet.errors[:base] << "Bet not editable"
+    end
+  end
 
   def team_a_wins?
     score_a > score_b
