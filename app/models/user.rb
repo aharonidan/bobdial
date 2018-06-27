@@ -97,6 +97,15 @@ class User < ApplicationRecord
     daily_score == scores.max
   end
 
+  def daily_loser
+
+    unplayed_games = Game.where(match_time: Date.today.beginning_of_day..Date.today.end_of_day, score_a: nil).any?
+    return if unplayed_games
+
+    scores = User.where(account: account).map(&:daily_score)
+    daily_score == scores.min
+  end
+
   def black_horse_points
     return 8 if black_horse and Setting.where(name: 'black_horse', value: black_horse.name).any?
     return 0

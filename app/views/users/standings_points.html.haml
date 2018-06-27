@@ -30,6 +30,8 @@
 					%td
 						- if user.daily_king
 							%img.icon.is-small.image-center{src: '/images/king.png'}
+						- if user.daily_loser
+							%img.icon.is-small.image-center{src: '/images/loser.png'}
 						= user.name
 					%td.min-width.text-centered.align-bottom.active-deadline= user.daily_score
 					%td.min-width.text-centered.align-bottom.bold.red= user.points
