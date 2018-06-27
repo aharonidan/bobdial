@@ -50,6 +50,7 @@ module SessionsHelper
     return false if title == :black_horse and user.black_horse and user.black_horse.name == 'costa_rica'
     return false if title == :black_horse and user.black_horse and user.black_horse.name == 'korea_republic'
     return false if title == :black_horse and user.black_horse and user.black_horse.name == 'tunisia'
+    return false if title == :black_horse and user.black_horse and user.black_horse.name == 'australia'
     return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'egypt'
     return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'peru'
     return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'iceland'
