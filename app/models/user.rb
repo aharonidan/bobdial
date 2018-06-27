@@ -83,6 +83,11 @@ class User < ApplicationRecord
     super || 0
   end
 
+  def daily_score
+    today = bets.joins(:game).where.not(games: {score_a: nil}).where(games: {match_time: Date.today.beginning_of_day..Date.today.end_of_day})
+    today.sum(:points)
+  end
+
   def black_horse_points
     return 8 if black_horse and Setting.where(name: 'black_horse', value: black_horse.name).any?
     return 0

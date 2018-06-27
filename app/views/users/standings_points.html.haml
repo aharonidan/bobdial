@@ -5,6 +5,8 @@
 	%thead
 		%th.text-centered #
 		%th Name
+		%th{title: 'Daily score', rel: 'tooltip'}
+			%img.icon.is-medium.image-center{src: '/images/today-header.png'}
 		%th.text-centered Pts
 		%th
 		%th.wide-column{title: 'Kivoon', rel: 'tooltip'}
@@ -26,7 +28,8 @@
 				%tr
 					%td.text-centered= rank.rank
 					%td= user.name
-					%td.min-width.text-centered.bold= user.points
+					%td.min-width.text-centered= user.daily_score
+					%td.min-width.text-centered.bold.red= user.points
 					%td
 					%td.min-width.text-centered= user.kivoon
 					%td.min-width.text-centered= user.goal_diffrence
