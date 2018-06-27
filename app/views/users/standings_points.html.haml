@@ -26,14 +26,17 @@
 		- for rank in @ranking
 			- for user in rank.rankables
 				%tr
-					%td.text-centered= rank.rank
-					%td= user.name
-					%td.min-width.text-centered.active-deadline= user.daily_score
-					%td.min-width.text-centered.bold.red= user.points
+					%td.text-centered.align-bottom= rank.rank
 					%td
-					%td.min-width.text-centered= user.kivoon
-					%td.min-width.text-centered= user.goal_diffrence
-					%td.min-width.text-centered= user.bingo
+						- if user.daily_king
+							%img.icon.is-small.image-center{src: '/images/king.png'}
+						= user.name
+					%td.min-width.text-centered.align-bottom.active-deadline= user.daily_score
+					%td.min-width.text-centered.align-bottom.bold.red= user.points
+					%td
+					%td.min-width.text-centered.align-bottom= user.kivoon
+					%td.min-width.text-centered.align-bottom= user.goal_diffrence
+					%td.min-width.text-centered.align-bottom= user.bingo
 					- if bop_account?
-						%td.min-width.text-centered= user.nadir_bingo
-					%td.min-width.text-centered= user.donkey
+						%td.min-width.text-centered.align-bottom= user.nadir_bingo
+					%td.min-width.text-centered.align-bottom= user.donkey
