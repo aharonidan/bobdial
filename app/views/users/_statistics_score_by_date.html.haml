@@ -12,10 +12,20 @@
 
   - if @data.present?
     %table.table
+      %th
       %th Name
       %th Daily Score
       %tbody
         -for user in @data
-          %td= user[:name]
-          %td= user[:points]
+          %tr
+            - if user[:king]
+              %td
+            -else user[:loser]
+              %td
+            -else
+              %td
+
+            %td
+            %td= user[:name]
+            %td= user[:points]
 
