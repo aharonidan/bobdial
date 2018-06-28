@@ -58,6 +58,7 @@ module SessionsHelper
     return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'senegal'
     return false if title == :champion and user.champion and user.champion.name == 'germany'
     return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'timo_werner'
+    return false if title == :after_army_trip and user.after_army_trip and user.after_army_trip == 'africa'
 
     return true if not Game.send("#{title}_announced?")
     user.send("#{title}_points") > 0
