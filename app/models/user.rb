@@ -88,6 +88,23 @@ class User < ApplicationRecord
     today.sum(:points)
   end
 
+  def best_day
+    start_date = Game.first.match_time.to_date
+
+    max = 0
+    max_date = nil
+
+    start_date.upto(Date.today) do |day|
+      days_bets = bets.joins(:game).where.not(games: {score_a: nil}).where(games: {match_time: start_date.beginning_of_day..start_date.end_of_day})
+      points = days_bets.sum(:points)
+      if points > max
+        max = points
+        max_date = day
+      end
+    end
+    {max: max, max_date: max_date}
+  end
+
   def daily_king
 
     unplayed_games = Game.where(match_time: Date.today.beginning_of_day..Date.today.end_of_day, score_a: nil).any?
@@ -185,7 +202,6 @@ class User < ApplicationRecord
     end
     sum
   end
-
 
   def account_name= value
     self.account = Account.where(name: value).first
