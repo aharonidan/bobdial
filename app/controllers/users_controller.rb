@@ -86,7 +86,7 @@ class UsersController < ApplicationController
         points << user_points
       end
 
-      @data do |user|
+      for user in @data
         if user[:points] == points.max
           user[:king] = true
         elsif user[:points] == points.min
