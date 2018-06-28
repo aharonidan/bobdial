@@ -95,7 +95,7 @@ class User < ApplicationRecord
     max_date = nil
 
     start_date.upto(Date.today) do |day|
-      days_bets = bets.joins(:game).where.not(games: {score_a: nil}).where(games: {match_time: start_date.beginning_of_day..start_date.end_of_day})
+      days_bets = bets.joins(:game).where.not(games: {score_a: nil}).where(games: {match_time: day.beginning_of_day..day.end_of_day})
       points = days_bets.sum(:points)
       if points > max
         max = points
