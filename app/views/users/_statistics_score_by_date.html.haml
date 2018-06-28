@@ -20,8 +20,10 @@
           %tr
             - if user[:king]
               %td
-            -else user[:loser]
+                %img.icon.is-small.image-center{src: '/images/king.png'}
+            -elsif user[:loser]
               %td
+                %img.icon.is-small.image-center{src: '/images/loser.png'}
             -else
               %td
 

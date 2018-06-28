@@ -77,12 +77,22 @@ class UsersController < ApplicationController
   def score_by_date
     users = User.where(account: current_account)
     @data = []
+    points = []
     if params[:date].present?
       @date = Date.parse(params[:date])
       for user in users
-        @data << {name: user.name, points: user.score_by_date(@date) }
+        user_points = user.score_by_date(@date)
+        @data << {name: user.name, points: user_points }
+        points << user_points
       end
-      @data.sort! {|user| user[:points]}
+
+      @data do |user|
+        if user[:points] == points.max
+          user[:king] = true
+        elsif user[:points] == points.min
+          user[:loser] = true
+        end
+      end
     end
 
 
