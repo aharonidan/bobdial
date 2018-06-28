@@ -22,6 +22,8 @@ Rails.application.routes.draw do
 
   get 'standings/:tab', to: 'users#standings'
 
+  get 'users/score_by_date', to: 'users#score_by_date'
+
   get 'statistics/:tab', to: 'users#statistics'
 
   get 'rules', to: 'static_pages#rules'

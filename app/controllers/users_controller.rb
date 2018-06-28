@@ -74,6 +74,25 @@ class UsersController < ApplicationController
     end
   end
 
+  def score_by_date
+    users = User.where(account: current_account)
+    @data = []
+    if params[:date].present?
+      @date = Date.parse(params[:date])
+      for user in users
+        @data << {name: user.name, points: user.score_by_date(@date) }
+      end
+      @data.sort! {|user| user[:points]}
+    end
+
+
+    @active_nav_tab = :standings
+    @active_tab = 'statistics'
+    @active_subtab = 'score_by_date'
+
+    render "standings_statistics"
+  end
+
   def calculate_statistics_leaders
     @nadir_chart = {}
     for user in current_account.users

@@ -1,0 +1,21 @@
+%form{method: :get, action: '/users/score_by_date'}
+  .s40
+  .columns.is-mobile.border-bottom
+    .column.is-three-quarters
+      .select.left-margin
+        %select{name: :date}
+          %option{value: ''}= 'Select date'
+          -for date in Game.first.match_time.to_date.upto(Date.today)
+            %option{value: date, selected: date == @date}= date.strftime('%d/%m')
+    .column.align-right.right-margin
+      %button.button{type: :submit} Submit
+
+  - if @data.present?
+    %table.table
+      %th Name
+      %th Daily Score
+      %tbody
+        -for user in @data
+          %td= user[:name]
+          %td= user[:points]
+

@@ -11,8 +11,12 @@
         %a{href: '/statistics/leaders'} Leaders
       %li{ class: @active_subtab == 'segments' ? 'is-active' : '' }
         %a{href: '/statistics/segments'} Segments
+      %li{ class: @active_subtab == 'score_by_date' ? 'is-active' : '' }
+        %a{href: '/statistics/score_by_date'} Score by date
 
   - if @active_subtab == 'leaders'
     = render '/users/statistics_leaders'
   - elsif @active_subtab == 'segments'
     = render '/users/statistics_segments'
+  -elsif @active_subtab == 'score_by_date'
+    = render '/users/statistics_score_by_date'

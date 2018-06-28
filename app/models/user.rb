@@ -88,6 +88,11 @@ class User < ApplicationRecord
     today.sum(:points)
   end
 
+  def score_by_date date
+    days_bets = bets.joins(:game).where.not(games: {score_a: nil}).where(games: {match_time: date.beginning_of_day..date.end_of_day})
+    days_bets.sum(:points)
+  end
+
   def best_day
     start_date = Game.first.match_time.to_date
 
