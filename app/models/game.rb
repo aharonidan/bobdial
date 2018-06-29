@@ -68,4 +68,8 @@ class Game < ApplicationRecord
   def playoff?
     is_playoff
   end
+
+  def self.no_games_today
+    where(match_time: Date.today.beginning_of_day..Date.today.end_of_day).empty?
+  end
 end

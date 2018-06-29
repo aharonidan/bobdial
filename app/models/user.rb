@@ -111,6 +111,7 @@ class User < ApplicationRecord
   end
 
   def daily_king
+    return if Game.no_games_today
 
     unplayed_games = Game.where(match_time: Date.today.beginning_of_day..Date.today.end_of_day, score_a: nil).any?
     return if unplayed_games
@@ -120,7 +121,7 @@ class User < ApplicationRecord
   end
 
   def daily_loser
-
+    return if Game.no_games_today
     unplayed_games = Game.where(match_time: Date.today.beginning_of_day..Date.today.end_of_day, score_a: nil).any?
     return if unplayed_games
 
