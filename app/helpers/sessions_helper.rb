@@ -58,6 +58,7 @@ module SessionsHelper
     return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'senegal'
     return false if title == :champion and user.champion and user.champion.name == 'germany'
     return false if title == :champion and user.champion and user.champion.name == 'argentina'
+    return false if title == :champion and user.champion and user.champion.name == 'spain'
     return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'timo_werner'
     return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'messi'
     return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'ronaldo'
