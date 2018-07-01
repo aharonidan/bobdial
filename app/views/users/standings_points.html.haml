@@ -26,7 +26,11 @@
 		- for rank in @ranking
 			- for user in rank.rankables
 				%tr
-					%td.text-centered.align-bottom= rank.rank
+					- if bop_account?
+						%td
+							%img.icon.is-medium.image-center{src: "/images/#{rank.rank}.png"}
+					- else
+						%td.text-centered.align-bottom= rank.rank
 					%td
 						- if user.daily_king
 							%img.icon.is-small.image-center{src: '/images/king.png'}
