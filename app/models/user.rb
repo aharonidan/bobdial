@@ -74,7 +74,7 @@ class User < ApplicationRecord
     # sum += after_army_trip_points
     # sum += champion_points
     # sum += top_scorer_points
-    sum += 5 if user.after_army_trip == 'asia'
+    sum += 5 if after_army_trip == 'asia'
 
     update(points: sum)
 
