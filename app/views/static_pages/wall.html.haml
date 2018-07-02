@@ -1,12 +1,17 @@
 %h1.title Standings
 = render 'users/table_tabs'
 .s20
+%a#play.left-margin
+  %img.icon.is-medium{src: '/images/sound.png'}
+.s20
 %img{src: '/images/daily.jpeg'}
 .s20
 %img{src: '/images/daily2.jpeg'}
 .s20
 %img{src: '/images/daily3.jpeg'}
 
-%audio{autoplay: true}
+%audio#halau{autoplay: true}
   %source{src: "images/halau.mp3", type: "audio/mpeg"}
+
+
 

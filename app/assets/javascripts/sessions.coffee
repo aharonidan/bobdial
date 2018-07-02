@@ -39,3 +39,8 @@ $ ->
       row.find('#submit-bet').css('visibility', 'hidden');
 
   $('.notification').delay(3000).fadeOut()
+
+  document.getElementById('play').addEventListener 'click', ->
+    document.getElementById('halau').play()
+
+
