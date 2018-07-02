@@ -41,6 +41,9 @@ $ ->
   $('.notification').delay(3000).fadeOut()
 
   document.getElementById('play').addEventListener 'click', ->
-    document.getElementById('halau').play()
+    # document.getElementById('halau').play()
+    player = document.getElementById('halau');
+    player.src = 'images/halau.mp3;'
+    player.play()
 
 
