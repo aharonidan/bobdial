@@ -7,6 +7,8 @@
     %li{ class: @active_tab == 'statistics' ? 'is-active' : '' }
       %a{href: '/statistics/leaders'} Stats
     - if bop_account?
+      %li{ class: @active_tab == 'wall' ? 'is-active' : '' }
+        %a{href: '/wall'} Daily Wall
       %li{ class: @active_tab == 'reports' ? 'is-active' : '' }
         %a{href: '/reports'} Reports
 

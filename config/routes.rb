@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get 'statistics/:tab', to: 'users#statistics'
 
   get 'rules', to: 'static_pages#rules'
+  get 'wall', to: 'static_pages#wall'
   get 'unauthorized', to: 'static_pages#unauthorized'
 
   post 'bets', to: 'bets#create'
