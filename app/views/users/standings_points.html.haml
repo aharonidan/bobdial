@@ -20,6 +20,8 @@
 				%img.icon.is-medium.image-center{src: '/images/nadir.png'}
 		%th{title: 'Donkey', rel: 'tooltip'}
 			%img.icon.is-medium.image-center{src: '/images/donkey-black2.png'}
+		%th{title: 'After the Army Trip', rel: 'tooltip'}
+			%img.icon.is-medium.image-center{src: '/images/army.png'}
 
 
 	%tbody
@@ -46,3 +48,8 @@
 					- if bop_account?
 						%td.min-width.text-centered.align-bottom= user.nadir_bingo
 					%td.min-width.text-centered.align-bottom= user.donkey
+					%td.min-width
+						- if user.after_army_trip == 'asia'
+							%img.icon.is-medium.image-center{src: '/images/check.png'}
+						- else
+							%img.icon.is-medium.image-center{src: '/images/x.png'}
