@@ -1,6 +1,5 @@
 %table.table.is-full-width.display-block.word-wrap
 	%thead
-		%th.align-bottom #
 		%th.align-bottom Name
 		%th{title: 'Black Horse', rel: 'tooltip'}
 			%img.icon.is-medium.image-center{src: '/images/blackhorse.png'}
@@ -16,7 +15,6 @@
 		- for rank in @ranking
 			- for user in rank.rankables
 				%tr
-					%td= rank.rank
 					%td= user.name
 					- if bopdial_started? or user == current_user
 						%td{title: user.black_horse ? "#{user.black_horse.name.titleize}" : '', rel: 'tooltip'}
