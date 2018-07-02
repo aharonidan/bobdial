@@ -42,7 +42,6 @@ $ ->
 
 $(document).on 'turbolinks:load', ->
   document.getElementById('play').addEventListener 'click', ->
-    # document.getElementById('halau').play()
     player = document.getElementById('halau');
     player.src = 'images/halau.mp3;'
     player.play()
