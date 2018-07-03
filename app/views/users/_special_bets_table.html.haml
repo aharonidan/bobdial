@@ -29,10 +29,10 @@
 							- if user.champion
 								%div{class: got_horse_right?(:champion, user) ? '' : 'crossed'}
 									%img.flag_icon{src: "/flags/#{user.champion.name}.png"}
-						%td.text-centered
+						%td
 							%div{class: got_horse_right?(:top_scorer, user) ? '' : 'crossed'}
 								= user.top_scorer.titleize if user.top_scorer
-						%td.text-centered{class: user.after_army_trip == 'asia' ? 'highlighted' : '' }
+						%td{class: user.after_army_trip == 'asia' ? 'highlighted' : '' }
 							%div{class: got_horse_right?(:after_army_trip, user) ? '' : 'crossed'}
 								= after_army_short(user.after_army_trip) if user.after_army_trip
 					- else
