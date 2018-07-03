@@ -41,9 +41,11 @@ $ ->
   $('.notification').delay(3000).fadeOut()
 
 $(document).on 'turbolinks:load', ->
-  document.getElementById('play').addEventListener 'click', ->
-    player = document.getElementById('halau');
-    player.src = 'images/halau.mp3;'
-    player.play()
+  exists = document.getElementById('play')
+  if exists
+    document.getElementById('play').addEventListener 'click', ->
+      player = document.getElementById('halau');
+      player.src = 'images/halau.mp3;'
+      player.play()
 
 
