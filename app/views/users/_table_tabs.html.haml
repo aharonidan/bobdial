@@ -8,7 +8,10 @@
       %a{href: '/statistics/leaders'} Stats
     - if bop_account?
       %li{ class: @active_tab == 'wall' ? 'is-active' : '' }
-        %a{href: '/wall'} Daily Wall
+        %a{href: '/wall'}
+          - unless Setting.wall.include? current_user.id
+            %i.icon.fa.fa-bell.alert
+          Daily Wall
       %li{ class: @active_tab == 'reports' ? 'is-active' : '' }
         %a{href: '/reports'} Reports
 
