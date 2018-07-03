@@ -1,5 +1,5 @@
 class Setting < ApplicationRecord
-	before_save { self.value = value.parameterize(separator: '_') }
+	# before_save { self.value = value.parameterize(separator: '_') }
 	after_create { User.calculate_points }
 
 	def self.wall
