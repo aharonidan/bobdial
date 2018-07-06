@@ -59,9 +59,12 @@ module SessionsHelper
     return false if title == :champion and user.champion and user.champion.name == 'germany'
     return false if title == :champion and user.champion and user.champion.name == 'argentina'
     return false if title == :champion and user.champion and user.champion.name == 'spain'
+    return false if title == :champion and user.champion and user.champion.name == 'brazil'
     return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'timo_werner'
     return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'messi'
     return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'ronaldo'
+    return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'neymar'
+    return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'cavani'
     return false if title == :after_army_trip and user.after_army_trip and user.after_army_trip == 'africa'
     return false if title == :after_army_trip and user.after_army_trip and user.after_army_trip == 'central_america'
 
