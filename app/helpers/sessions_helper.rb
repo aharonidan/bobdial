@@ -64,7 +64,7 @@ module SessionsHelper
     return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'messi'
     return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'ronaldo'
     return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'neymar'
-    return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'cavani'
+    return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'cavanni'
     return false if title == :after_army_trip and user.after_army_trip and user.after_army_trip == 'africa'
     return false if title == :after_army_trip and user.after_army_trip and user.after_army_trip == 'central_america'
 
