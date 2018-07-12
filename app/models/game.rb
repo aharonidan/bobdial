@@ -2,7 +2,7 @@ class Game < ApplicationRecord
   belongs_to :team_a, class_name: 'Team'
   belongs_to :team_b, class_name: 'Team'
 
-  after_update { User.calculate_points }
+  # after_update { User.calculate_points }
 
   def not_editable?(account: nil)
     # adjusting to Israel time
