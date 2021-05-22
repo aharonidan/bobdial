@@ -1,6 +1,6 @@
 // $darker-red: #821B15;
-$darker-red: #c0392b;
-$dark-red: #c0392b;
+$darker-red: #108FA1;
+$dark-red: #108FA1;
 $brown: #757763;
 $beige-light: #D0D1CD;
 $beige-lighter: #EFF0EB;
@@ -46,7 +46,8 @@ body{
 }
 
 nav.navbar.is-dark{
-  background-image: url("/images/navbar-background.png");
+  // background-image: url("/images/navbar-background.png");
+  background-color: #108FA1;
   background-size: 200px;
 }
 
@@ -75,7 +76,7 @@ nav.navbar.is-dark{
 }
 
 footer {
-  border-top: 1px #c0392b solid;
+  border-top: 1px #108FA1 solid;
   position: fixed;
   bottom: 0;
   max-width: 500px;
@@ -95,7 +96,8 @@ footer {
     font-weight: bold;
   }
   li.is-active a{
-    background-image: url("/images/navbar-background.png");
+    // background-image: url("/images/navbar-background.png");
+    background-color: #108FA1;
     background-size: 200px;
 
   }
