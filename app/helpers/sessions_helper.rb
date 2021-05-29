@@ -36,38 +36,35 @@ module SessionsHelper
     Game.horses_editable?(account: account)
   end
 
-  def after_army_options(continent)
-    "#{continent.titleize} - #{Team.after_army_teams(continent)}"
-  end
-
   def after_army_short(continent)
     continent.split('_').last.titleize
   end
 
   def got_horse_right? title, user
-    return false if title == :black_horse and user.black_horse and user.black_horse.name == 'morocco'
-    return false if title == :black_horse and user.black_horse and user.black_horse.name == 'saudi_arabia'
-    return false if title == :black_horse and user.black_horse and user.black_horse.name == 'costa_rica'
-    return false if title == :black_horse and user.black_horse and user.black_horse.name == 'korea_republic'
-    return false if title == :black_horse and user.black_horse and user.black_horse.name == 'tunisia'
-    return false if title == :black_horse and user.black_horse and user.black_horse.name == 'australia'
-    return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'egypt'
-    return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'peru'
-    return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'iceland'
-    return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'serbia'
-    return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'senegal'
-    return false if title == :champion and user.champion and user.champion.name == 'germany'
-    return false if title == :champion and user.champion and user.champion.name == 'argentina'
-    return false if title == :champion and user.champion and user.champion.name == 'spain'
-    return false if title == :champion and user.champion and user.champion.name == 'brazil'
-    return false if title == :champion and user.champion and user.champion.name == 'belgium'
-    return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'timo_werner'
-    return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'messi'
-    return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'ronaldo'
-    return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'neymar'
-    return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'cavanni'
-    return false if title == :after_army_trip and user.after_army_trip and user.after_army_trip == 'africa'
-    return false if title == :after_army_trip and user.after_army_trip and user.after_army_trip == 'central_america'
+    return true
+    # return false if title == :black_horse and user.black_horse and user.black_horse.name == 'morocco'
+    # return false if title == :black_horse and user.black_horse and user.black_horse.name == 'saudi_arabia'
+    # return false if title == :black_horse and user.black_horse and user.black_horse.name == 'costa_rica'
+    # return false if title == :black_horse and user.black_horse and user.black_horse.name == 'korea_republic'
+    # return false if title == :black_horse and user.black_horse and user.black_horse.name == 'tunisia'
+    # return false if title == :black_horse and user.black_horse and user.black_horse.name == 'australia'
+    # return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'egypt'
+    # return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'peru'
+    # return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'iceland'
+    # return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'serbia'
+    # return false if title == :grey_horse and user.grey_horse and user.grey_horse.name == 'senegal'
+    # return false if title == :champion and user.champion and user.champion.name == 'germany'
+    # return false if title == :champion and user.champion and user.champion.name == 'argentina'
+    # return false if title == :champion and user.champion and user.champion.name == 'spain'
+    # return false if title == :champion and user.champion and user.champion.name == 'brazil'
+    # return false if title == :champion and user.champion and user.champion.name == 'belgium'
+    # return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'timo_werner'
+    # return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'messi'
+    # return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'ronaldo'
+    # return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'neymar'
+    # return false if title == :top_scorer and user.top_scorer and user.top_scorer == 'cavanni'
+    # return false if title == :after_army_trip and user.after_army_trip and user.after_army_trip == 'africa'
+    # return false if title == :after_army_trip and user.after_army_trip and user.after_army_trip == 'central_america'
 
     return true if not Game.send("#{title}_announced?")
     user.send("#{title}_points") > 0
