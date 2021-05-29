@@ -13,13 +13,13 @@ end
 
 
 deadlines = {
-  '1' => Time.parse('13/06/2021 18:00'),
-  '2' => Time.parse('18/06/2021 21:00'),
-  '3' => Time.parse('24/06/2021 17:00'),
-  'Round of 16' => Time.parse('29/06/2021 21:00'),
-  'Quarter Finals' => Time.parse('05/07/2021 17:00'),
-  'Semi Finals' => Time.parse('09/07/2021 21:00'),
-  'Final' => Time.parse('13/07/2021 17:00'),
+  '1' => Time.parse('11/06/2021 18:00'),
+  '2' => Time.parse('16/06/2021 12:00'),
+  '3' => Time.parse('16/06/2021 12:00'),
+  'Round of 16' => Time.parse('26/06/2021 15:00'),
+  'Quarter Finals' => Time.parse('02/07/2021 15:00'),
+  'Semi Finals' => Time.parse('06/07/2021 18:00'),
+  'Final' => Time.parse('11/07/2021 18:00'),
 }
 
 CSV.foreach('db/matches.csv', headers: true) do |row|
