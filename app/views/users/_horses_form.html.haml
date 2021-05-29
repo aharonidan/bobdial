@@ -20,18 +20,6 @@
               %option{value: ''} Select
               - for grey_horse in Team.grey_horses
                 %option{value: grey_horse.id, selected: current_user.grey_horse == grey_horse}= grey_horse.name.titleize
-      %tr.no-border-bottom
-        %td
-          %label.label{for: :after_army_trip} After the Army Trip
-        %td
-          .select
-            %select{name: :after_army_trip, required: true}
-              %option{value: ''} Select
-              - for after_army_trip in Team.after_army_trips
-                %option{value: after_army_trip, selected: after_army_trip == current_user.after_army_trip }= after_army_trip.titleize
-      - for after_army_trip in Team.after_army_trips
-        %tr.no-border.padding-bottom
-          %td.is-size-7-touch{'colspan' => 2}=after_army_options(after_army_trip)
       %tr.border-top
         %td
           %label.label{for: :champion_id} Winner
@@ -39,8 +27,9 @@
           .select
             %select{name: :champion_id, required: true}
               %option{value: ''} Select
-              - for champion in Team.all_teams
+              - for champion in Team.winner_options
                 %option{value: champion.id, selected: current_user.champion == champion}= champion.name.titleize
+              %option{value: 'none_of_the_options', selected: current_user.champion == 'none_of_the_options'}= 'None of the above'
       %tr
         %td
           %label.label{for: :top_scorer} Top Scorer
