@@ -22,7 +22,7 @@ class GamesController < ApplicationController
     deadlines.sort!
     @active_deadline = deadlines[deadlines.index(now) + 1]
 
-    @bets        = Bet.where(user: current_user, group: params[:group])
+    @bets = Bet.where(user: current_user, group: params[:group])
   end
 
   def knockout_stage
