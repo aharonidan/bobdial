@@ -4,14 +4,12 @@
       %a{href: '/standings/points'} Standings
     %li{ class: @active_tab == 'horses' ? 'is-active' : '' }
       %a{href: '/standings/horses'} Special Bets
-    %li{ class: @active_tab == 'statistics' ? 'is-active' : '' }
-      %a{href: '/statistics/leaders'} Stats
-    - if bop_account?
-      / %li{ class: @active_tab == 'wall' ? 'is-active' : '' }
-      /   %a{href: '/wall'}
-      /     - unless Setting.wall.include? current_user.id
-      /       %i.icon.fa.fa-bell.alert
-      /     Daily Wall
-      %li{ class: @active_tab == 'reports' ? 'is-active' : '' }
-        %a{href: '/reports'} Reports
+    -# - if bop_account?
+    -#   / %li{ class: @active_tab == 'wall' ? 'is-active' : '' }
+    -#   /   %a{href: '/wall'}
+    -#   /     - unless Setting.wall.include? current_user.id
+    -#   /       %i.icon.fa.fa-bell.alert
+    -#   /     Daily Wall
+    -#   %li{ class: @active_tab == 'reports' ? 'is-active' : '' }
+    -#     %a{href: '/reports'} Reports
 

@@ -1,5 +1,5 @@
 - filename = bop_account? ? 'rules' : 'rules_simplified'
-- f = File.open("#{File.dirname(__FILE__)}/#{filename}.md")
+- f = File.open("#{File.dirname(__FILE__)}/rules.md")
 - lines = f.read.split("\n")
 .content.left-margin.right-margin
   - for line in lines
