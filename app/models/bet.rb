@@ -26,12 +26,16 @@ class Bet < ApplicationRecord
     score_a == game.score_a and score_b == game.score_b
   end
 
-  def bingo_level_1?
+  def bingo_type_1?
     bingo_specific?(1,0) or bingo_specific?(1,1)
   end
 
-  def bingo_level_2?
+  def bingo_type_2?
     bingo_specific?(0,0) or bingo_specific?(2,0) or bingo_specific?(2,1) or bingo_specific?(3,0)
+  end
+
+  def bingo_type_3?
+    bingo_specific?(2,0) or bingo_specific?(1,1) or bingo_specific?(2,1) or bingo_specific?(3,0)
   end
 
   def bingo_4_goals_or_more?
@@ -69,7 +73,7 @@ class Bet < ApplicationRecord
 
   def nadir?
     return false if nadir_functionality_disabled_for_account
-    minimum_bets_count <= 3 and minimum_bets_count == my_bet_count
+    minimum_bets_count <= 2 and minimum_bets_count == my_bet_count
   end
 
   def bets_and_count
@@ -106,32 +110,50 @@ class Bet < ApplicationRecord
     return super if super
     return unless game.played?
 
-    result = if bingo_level_1?
-      5
-    elsif bingo_level_2?
-      6
-    elsif bingo_4_goals_or_more?
-      number_of_goals + 3
-    elsif goal_difference_2_or_more?
-      4
-    elsif goal_difference_1?
-      3
-    elsif kivoon?
-      2
-    elsif donkey?
-      -2
-    else
-      0
+    if not playoff?
+      result = if bingo_type_1?
+        5
+      elsif bingo_type_2?
+        6
+      elsif bingo_4_goals_or_more?
+        number_of_goals + 3
+      elsif goal_difference_2_or_more?
+        4
+      elsif goal_difference_1?
+        3
+      elsif kivoon?
+        2
+      elsif donkey?
+        -2
+      else
+        0
+      end
+
+    elsif playoff?
+      result = if bingo_specific?(1, 0)
+        6
+      elsif bingo_type_3??
+        7
+      elsif bingo_specific?(0, 0)
+        8
+      elsif bingo_4_goals_or_more?
+        number_of_goals + 4
+      elsif goal_difference_2_or_more?
+        5
+      elsif goal_difference_1?
+        4
+      elsif draw? and kivoon?
+        3
+      elsif kivoon?
+        2
+      elsif donkey?
+        -3
+      else
+        0
+      end
     end
 
-    result += 2 if bingo? and nadir?
-
-    result += 1 if result > 0 and playoff?
-
-    result += 1 if result > 0 and playoff? and kivoon? and draw?
-    result += 1 if result > 0 and playoff? and bingo_specific?(1,1)
-
-    result -= 1 if result < 0 and playoff?
+    result += 3 if kivoon? and nadir?
 
     update(points: result)
 
