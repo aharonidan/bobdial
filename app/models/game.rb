@@ -45,10 +45,6 @@ class Game < ApplicationRecord
     Setting.where(name: 'champion').any?
   end
 
-  def self.after_army_trip_announced?
-    Setting.where(name: 'after_army_trip').any?
-  end
-
   def played?
     score_a.present? and score_b.present?
   end
