@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :redirect_to_login, unless: :logged_in?, only: [:standings, :my_bets, :all_bets]
 
   def new
+    redirect_to '/' if current_user
     @active_nav_tab = :signup
 
     account = Account.where(name: params[:account_name].downcase).take

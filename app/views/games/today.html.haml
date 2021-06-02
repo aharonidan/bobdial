@@ -8,5 +8,5 @@
           = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take, back: :today}
     .s40
 - else
-  %p No matches today
+  %p.left_padded No matches today
 
