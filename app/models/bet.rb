@@ -73,7 +73,7 @@ class Bet < ApplicationRecord
 
   def nadir?
     return false if nadir_functionality_disabled_for_account
-    minimum_bets_count <= 2 and minimum_bets_count == my_bet_count
+    minimum_bets_count <= 2 and minimum_bets_count == my_kivoon_count
   end
 
   def bets_and_count
@@ -89,12 +89,43 @@ class Bet < ApplicationRecord
     @bets_and_count = result
   end
 
-  def minimum_bets_count
-    bets_and_count.values.min
+  def kivoon_and_count
+    return @kivoon_and_count if @kivoon_and_count
+    
+    result = {}
+
+    bets = user.account.bets(game: game)
+    for bet in bets
+      if bet.team_a_wins?
+        result[:team_a] ||= 0
+        result[:team_a] += 1
+      elsif bet.team_b_wins?
+        result[:team_b] ||= 0
+        result[:team_b] += 1
+      elsif bet.draw?
+        result[:draw] ||= 0
+        result[:draw] += 1
+      end
+    end
+    @kivoon_and_count = result
   end
 
-  def my_bet_count
-    bets_and_count["#{score_a}-#{score_b}"]
+  def minimum_bets_count
+    kivoon_and_count.values.min
+  end
+
+  def my_kivoon
+    if team_a_wins?
+      :team_a
+    elsif team_b_wins?
+      :team_b
+    elsif draw?
+      :draw
+    end
+  end
+
+  def my_kivoon_count
+    kivoon_and_count[my_kivoon]
   end
 
   def nadir_functionality_disabled_for_account
