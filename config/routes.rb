@@ -52,5 +52,5 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  root to: 'users#standings', tab: 'points'
+  root 'users#standings', tab: 'points'
 end

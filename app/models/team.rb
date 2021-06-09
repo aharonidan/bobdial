@@ -5,7 +5,7 @@ class Team < ApplicationRecord
   end
 
   def self.winner_options
-    Team.where(name: ['france', 'england', 'belgium', 'spain', 'portugal'])
+    Team.where(name: ['france', 'england', 'belgium', 'spain', 'portugal', 'italy'])
   end
 
   def self.black_horses

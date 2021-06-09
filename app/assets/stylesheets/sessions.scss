@@ -18,12 +18,15 @@ html, body {
 }
 
 .avatar {
-  width: 100px;
-  height: 100px;
+  border-radius: 25px;
+  width: 175px;
+  height: 175px;
   margin: auto;
   margin-bottom: 10px;
   img {
     padding: 14px;
+    border-radius: 40px;
+
   }
 }
 
