@@ -40,7 +40,7 @@
             %select{name: :top_scorer, required: true}
               %option{value: ''} Select
               - for scorer in Team.top_scorer_options
-                %option{value: scorer, selected: current_user.top_scorer == scorer}= scorer
+                %option{value: scorer, selected: current_user.top_scorer == scorer.parameterize(separator: '_')}= scorer
               %option{value: 'other', selected: current_user.top_scorer == 'other'}= 'other'
 
 
