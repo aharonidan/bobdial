@@ -33,8 +33,15 @@
       %tr
         %td
           %label.label{for: :top_scorer} Top Scorer
+        / %td
+        /   %input.input{name: :top_scorer, value: (current_user.top_scorer.titleize if current_user.top_scorer), required: true}
         %td
-          %input.input{name: :top_scorer, value: (current_user.top_scorer.titleize if current_user.top_scorer), required: true}
+          .select
+            %select{name: :top_scorer, required: true}
+              %option{value: ''} Select
+              - for scorer in Team.top_scorer_options
+                %option{value: scorer, selected: current_user.top_scorer == scorer}= scorer
+              %option{value: 'other', selected: current_user.top_scorer == 'other'}= 'other'
 
 
   %button.button.is-link.is-full-width.submit-button{type: :submit} Submit
