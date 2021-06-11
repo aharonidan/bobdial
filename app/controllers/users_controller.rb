@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-  before_action :redirect_to_login, unless: :logged_in?, only: [:standings, :my_bets, :all_bets]
+  # REMOVE NEW TO ALLOW USERS TO REGISTER
+  before_action :redirect_to_login, unless: :logged_in?, only: [:standings, :my_bets, :all_bets, :new]
 
   def new
     redirect_to '/' if logged_in?
@@ -21,6 +22,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    # REMOVE TO ALLOW USERS TO REGISTER
+    return
     @user = User.new(user_params)
     if @user.save
       log_in @user

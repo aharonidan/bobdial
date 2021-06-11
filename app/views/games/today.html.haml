@@ -4,8 +4,12 @@
     %table.table.is-full-width
       %tbody.tbody
         = hidden_field_tag :authenticity_token, form_authenticity_token
-        - for game in @games
-          = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take, back: :today}
+        %form#bets-form{method: :post, action: '/bets'}
+          - for game in @games
+            = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take, back: :today}
+          - if @games.last.editable?(account: current_account)
+            %button.button.is-link.is-full-width.submit-button{type: :submit} Submit
+
     .s40
 - else
   %p.left_padded No matches today
