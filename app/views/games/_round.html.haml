@@ -1,13 +1,11 @@
-- if deadline == @active_deadline
-  %tbody.active-deadline
-    %tr.no-border
-      %td{colspan: 2}
-        %img.icon-inline-text{src: '/images/hourglass.png'}
-        Time Left
-      %td.time-left.align-right{colspan: 3, 'data-deadline' => deadline}= countdown(deadline - 3.hours)
-    - for game in games
-      = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
-- else
-  %tbody.border-bottom
-    - for game in games
-      = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
+/ - if game.deadline == @active_deadline
+/   %tbody.active-deadline
+/     %tr.no-border
+/       %td{colspan: 2}
+/         %img.icon-inline-text{src: '/images/hourglass.png'}
+/         Time Left
+/       %td.time-left.align-right{colspan: 3, 'data-deadline' => game.deadline}= countdown(game.deadline - 3.hours)
+/     = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
+/ - else
+%tbody.border-bottom
+  = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
