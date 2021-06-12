@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :bets
   has_many :user_stats
 
-  # validate :horses_do_not_change_after_deadline, on: :update
+  validate :horses_do_not_change_after_deadline, on: :update
 
   attr_accessor :remember_token
   attr_reader :account_name
