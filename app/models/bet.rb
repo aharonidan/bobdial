@@ -73,7 +73,7 @@ class Bet < ApplicationRecord
 
   def nadir?
     return false if nadir_functionality_disabled_for_account
-    minimum_bets_count <= 3 and minimum_bets_count == my_kivoon_count
+    my_kivoon_count <= 3
   end
 
   def bets_and_count
