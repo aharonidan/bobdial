@@ -7,7 +7,7 @@
   - if game.not_editable?(account: current_account)
     %td.next-arrow.clickable.action-button{'rowspan' => rowspan, 'data-href' => "/games/#{game.id}?back=#{back if defined?(back)}" }
       %a.fa.fa-chevron-right
-  - elsif bet and not defined?(back)
+  - elsif bet
     %td.edit-bet.clickable.action-button{'rowspan' => rowspan}
       %a.fa.fa-pencil
   - else

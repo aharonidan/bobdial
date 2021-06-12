@@ -1,14 +1,13 @@
 %h1.title Today
 - if @games.any?
-  %form#bets-form
+  %form#bets-form{method: :post, action: '/bets'}
     %table.table.is-full-width
       %tbody.tbody
-        %form#bets-form{method: :post, action: '/bets'}
-          = hidden_field_tag :authenticity_token, form_authenticity_token
-          - for game in @games
-            = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take, back: :today}
-          / - if @games.last.editable?(account: current_account)
-          /   %button.button.is-link.is-full-width.submit-button{type: :submit} Submit
+        = hidden_field_tag :authenticity_token, form_authenticity_token
+        - for game in @games
+          = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
+        - if @games.last.editable?(account: current_account)
+          %button.button.is-link.is-full-width.submit-button{type: :submit} Submit
 
     .s40
 - else
