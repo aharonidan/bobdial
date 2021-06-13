@@ -184,7 +184,7 @@ class Bet < ApplicationRecord
       end
     end
 
-    result += 3 if kivoon? and nadir?
+    result += 3 if nadir?
 
     update(points: result)
 
