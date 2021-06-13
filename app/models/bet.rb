@@ -58,6 +58,10 @@ class Bet < ApplicationRecord
     kivoon? and (score_a - score_b) == (game.score_a - game.score_b)
   end
 
+  def abs_goal_difference?
+    (score_a - score_b).abs == (game.score_a - game.score_b).abs
+  end
+
   def goal_difference_1?
     goal_difference? and (score_a - score_b).abs == 1
   end
@@ -68,7 +72,7 @@ class Bet < ApplicationRecord
 
   def donkey?
     return false unless game.played?
-    not bingo? and not kivoon? and score_a == game.score_b and score_b == game.score_a
+    not bingo? and not kivoon? and not draw? and abs_goal_difference?
   end
 
   def nadir?
