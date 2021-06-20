@@ -189,7 +189,7 @@ class User < ApplicationRecord
   def nadir_bingo
     sum = 0
     for bet in bets_of_played_games
-      sum += 1 if bet.bingo? and bet.nadir?
+      sum += 1 if bet.nadir? and (bet.bingo? or bet.kivoon?)
     end
     sum
   end
