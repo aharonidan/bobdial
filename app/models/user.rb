@@ -69,7 +69,7 @@ class User < ApplicationRecord
       sum += bet.points
     end
 
-    # sum += 8 if black_horse == Team.find_by(name: 'finland')
+    sum += 8 if black_horse == Team.find_by(name: 'finland')
     update(points: sum)
 
   end
