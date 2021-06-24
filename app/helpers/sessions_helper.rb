@@ -41,7 +41,7 @@ module SessionsHelper
   end
 
   def got_horse_right? title, user
-    return false if title == :black_horse and user.black_horse and user.black_horse.name != 'finland'
+    # return false if title == :black_horse and user.black_horse and user.black_horse.name != 'finland'
     return true
     # return false if title == :black_horse and user.black_horse and user.black_horse.name == 'morocco'
     # return false if title == :black_horse and user.black_horse and user.black_horse.name == 'saudi_arabia'
