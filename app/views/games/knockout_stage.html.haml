@@ -6,12 +6,12 @@
       %tbody.tbody
         = hidden_field_tag :authenticity_token, form_authenticity_token
         - game = @games.first
-        - if game.team_a.group != 'place_holder' and game.editable?
-          %tr.no-border.active-deadline
-            %td{colspan: 2}
-              %img.icon-inline-text{src: '/images/hourglass.png'}
-              Time Left
-            %td.time-left.align-right{colspan: 3}= countdown(game.deadline - 3.hours)
+        / - if game.team_a.group != 'place_holder' and game.editable?
+        /   %tr.no-border.active-deadline
+        /     %td{colspan: 2}
+        /       %img.icon-inline-text{src: '/images/hourglass.png'}
+        /       Time Left
+        /     %td.time-left.align-right{colspan: 3}= countdown(game.deadline - 3.hours)
         - for game in @games
           = render partial: 'games/bet_form', locals: {game: game, bet: @bets.where(game: game).take}
     .s40
