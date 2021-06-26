@@ -166,21 +166,21 @@ class Bet < ApplicationRecord
 
     elsif playoff?
       result = if bingo_specific?(1, 0)
-        6
-      elsif bingo_type_3?
         7
-      elsif bingo_specific?(0, 0)
+      elsif bingo_type_3?
         8
+      elsif bingo_specific?(0, 0)
+        9
       elsif bingo_4_goals_or_more?
-        number_of_goals + 4
+        number_of_goals + 5
       elsif goal_difference_2_or_more?
-        5
+        6
       elsif goal_difference_1?
-        4
+        5
       elsif draw? and kivoon?
-        3
+        4
       elsif kivoon?
-        2
+        3
       elsif donkey?
         -3
       else
