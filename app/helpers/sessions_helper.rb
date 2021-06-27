@@ -42,7 +42,7 @@ module SessionsHelper
 
   def got_horse_right? title, user
     return false if title == :black_horse and user.black_horse and user.black_horse.name != 'finland'
-    return false if title == :grey_horse and user.grey_horse and not ['austria', 'switzerland', 'sweden', 'wales', 'ukraine'].include?(user.grey_horse.name)
+    return false if title == :grey_horse and user.grey_horse and not ['czech_republic', 'austria', 'switzerland', 'sweden', 'wales', 'ukraine'].include?(user.grey_horse.name)
     return true
     
 
