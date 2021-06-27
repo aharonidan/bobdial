@@ -46,7 +46,7 @@ class GamesController < ApplicationController
       redirect_to '/unauthorized'
     else
       @active_tab = :bets
-      @bets = current_account.bets(game: @game)
+      @bets = current_account.bets(game: @game).sort_by {|bet| bet.user.points }
     end
     @back = params[:back]
   end
