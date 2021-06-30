@@ -33,7 +33,7 @@
 
 						%td
 							%div{class: got_horse_right?(:top_scorer, user) ? '' : 'crossed'}
-								= user.top_scorer.titleize if user.top_scorer
+								= user.top_scorer.titleize.split[-1] if user.top_scorer
 					- else
 						%td
 						%td
