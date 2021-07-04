@@ -70,7 +70,7 @@ class User < ApplicationRecord
     end
 
     sum += 8 if black_horse == Team.find_by(name: 'finland')
-    sum += 8 if account.name == 'bop' and grey_horse == Team.find_by(name: 'switzerland')
+    sum += 8 if grey_horse and ['czech_republic', 'switzerland'].include?(grey_horse.name)
     update(points: sum)
 
   end
