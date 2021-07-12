@@ -71,9 +71,6 @@ class User < ApplicationRecord
 
     sum += 8 if black_horse == Team.find_by(name: 'finland')
     sum += 8 if grey_horse and ['czech_republic', 'switzerland'].include?(grey_horse.name)
-    sum += 8 if grey_horse and ['czech_republic', 'switzerland'].include?(grey_horse.name)
-
-
     sum += 8 if top_scorer == 'cristiano_ronaldo'
     sum += 8 if account.name == 'bop' and ['romelu_lukaku', 'harry_kane'].include?(top_scorer)
     sum += 9 if champion and champion.name == 'italy'
